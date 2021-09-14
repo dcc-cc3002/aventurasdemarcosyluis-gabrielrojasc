@@ -1,5 +1,8 @@
 package com.example.aventurasdemarcoyluis;
 
+import java.util.Collection;
+import java.util.Hashtable;
+
 public interface Players {
   public int getLvl();
 
@@ -22,6 +25,8 @@ public interface Players {
   public void setFp(int fp);
 
   public int getMaxHp();
+
+  public String getItems();
 
   public void addItem(Items item);
 

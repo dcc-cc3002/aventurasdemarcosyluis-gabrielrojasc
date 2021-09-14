@@ -1,7 +1,6 @@
 package com.example.aventurasdemarcoyluis;
 
-import java.util.Hashtable;
-import java.util.List;
+import java.util.ArrayList;
 
 public abstract class AbstractPlayer implements Players {
 
@@ -11,7 +10,7 @@ public abstract class AbstractPlayer implements Players {
   protected int hp;
   protected int fp;
   protected int maxHp;
-  protected Hashtable<String, Items> items = new Hashtable<>();
+  protected ArrayList<String> itemList = new ArrayList<>();
 
   public AbstractPlayer(int LVL, int ATK, int DEF, int HP, int FP, int MaxHP) {
     this.lvl = LVL;
@@ -66,14 +65,18 @@ public abstract class AbstractPlayer implements Players {
     return maxHp;
   }
 
+  public String getItems() {
+    return itemList.toString();
+  }
+
   public void addItem(Items item) {
-    items.put(item.getName(), item);
+    itemList.add(item.getName());
   }
 
   public void useItem(Items item) {
-    if (items.containsKey(item.getName())) {
+    if (itemList.contains(item.getName())) {
       item.applyTo(this);
-      items.remove(item);
+      itemList.remove(item.getName());
     }
   }
 }

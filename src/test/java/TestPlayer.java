@@ -4,10 +4,15 @@ import com.example.aventurasdemarcoyluis.Marco;
 import com.example.aventurasdemarcoyluis.Luis;
 import com.example.aventurasdemarcoyluis.Players;
 import com.example.aventurasdemarcoyluis.RedMushroom;
+import com.example.aventurasdemarcoyluis.Star;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Hashtable;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class TestPlayer {
@@ -97,12 +102,43 @@ public class TestPlayer {
   }
 
   @Test
-  public void itemTest() {
+  public void itemGetterTest() {
+    ArrayList<String> items = new ArrayList<>();
+    assertEquals(items.toString(), testMarco.getItems());
+  }
+
+  @Test
+  public void addItemTest() {
+    Items redMushroom = new RedMushroom();
+    Items star = new Star();
+    ArrayList<String> items = new ArrayList<>();
+
+    testMarco.addItem(redMushroom);
+    items.add(redMushroom.getName());
+
+    assertEquals(items.toString(), testMarco.getItems());
+
+    testMarco.addItem(star);
+    items.add(star.getName());
+
+    assertEquals(items.toString(), testMarco.getItems());
+  }
+
+  @Test
+  public void useItemTest() {
     Items honeySyrup = new HoneySyrup();
+    ArrayList<String> items = new ArrayList<>();
+
     testMarco.addItem(honeySyrup);
+    items.add(honeySyrup.getName());
+    assertEquals(items.toString(), testMarco.getItems());
+
     int beforeFp = testMarco.getFp();
     testMarco.useItem(honeySyrup);
     int afterFp = beforeFp + 3;
     assertEquals(afterFp, testMarco.getFp());
+    items.remove(honeySyrup.getName());
+
+    assertEquals(items.toString(), testMarco.getItems());
   }
 }
