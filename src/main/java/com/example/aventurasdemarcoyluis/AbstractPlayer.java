@@ -1,6 +1,6 @@
 package com.example.aventurasdemarcoyluis;
 
-public abstract class AbstractPlayer implements Characters, Players {
+public abstract class AbstractPlayer implements Players {
 
   protected int lvl;
   protected int atk;
