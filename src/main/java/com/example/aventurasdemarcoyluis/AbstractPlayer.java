@@ -9,13 +9,13 @@ public abstract class AbstractPlayer implements Players {
   protected int fp;
   protected int maxHp;
 
-  public AbstractPlayer(int LVL, int ATK, int DEF, int HP, int FP, int MAXHP) {
+  public AbstractPlayer(int LVL, int ATK, int DEF, int HP, int FP, int MaxHP) {
     this.lvl = LVL;
     this.atk = ATK;
     this.def = DEF;
     this.hp = HP;
     this.fp = FP;
-    this.maxHp = MAXHP;
+    this.maxHp = MaxHP;
   }
 
   public int getLvl() {

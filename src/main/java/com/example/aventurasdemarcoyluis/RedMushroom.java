@@ -3,10 +3,10 @@ package com.example.aventurasdemarcoyluis;
 public class RedMushroom implements Items {
   public RedMushroom() {}
 
-  public void applyTo(Enemy character) {
-    int currHp = character.getHp();
-    int maxHp = character.getMaxHp();
+  public void applyTo(Players player) {
+    int currHp = player.getHp();
+    int maxHp = player.getMaxHp();
 
-    character.setHp(currHp + (int) ((double) maxHp * 0.1));
+    player.setHp(currHp + (int) (maxHp * 0.1));
   }
 }
