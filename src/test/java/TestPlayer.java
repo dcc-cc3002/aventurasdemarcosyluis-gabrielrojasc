@@ -1,6 +1,9 @@
+import com.example.aventurasdemarcoyluis.HoneySyrup;
+import com.example.aventurasdemarcoyluis.Items;
 import com.example.aventurasdemarcoyluis.Marco;
 import com.example.aventurasdemarcoyluis.Luis;
 import com.example.aventurasdemarcoyluis.Players;
+import com.example.aventurasdemarcoyluis.RedMushroom;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -91,5 +94,15 @@ public class TestPlayer {
   public void maxHpGetterTest() {
     assertEquals(50, testMarco.getMaxHp());
     assertEquals(55, testLuis.getMaxHp());
+  }
+
+  @Test
+  public void itemTest() {
+    Items honeySyrup = new HoneySyrup();
+    testMarco.addItem(honeySyrup);
+    int beforeFp = testMarco.getFp();
+    testMarco.useItem(honeySyrup);
+    int afterFp = beforeFp + 3;
+    assertEquals(afterFp, testMarco.getFp());
   }
 }

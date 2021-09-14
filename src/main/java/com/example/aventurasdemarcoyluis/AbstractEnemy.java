@@ -50,7 +50,6 @@ public abstract class AbstractEnemy implements Enemies {
   }
 
   public int getMaxHp() {
-
     return maxHp;
   }
 }

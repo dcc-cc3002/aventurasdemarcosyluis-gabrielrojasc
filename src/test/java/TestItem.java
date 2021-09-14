@@ -1,4 +1,5 @@
 import com.example.aventurasdemarcoyluis.HoneySyrup;
+import com.example.aventurasdemarcoyluis.Items;
 import com.example.aventurasdemarcoyluis.Marco;
 import com.example.aventurasdemarcoyluis.Players;
 import com.example.aventurasdemarcoyluis.RedMushroom;
@@ -43,5 +44,12 @@ public class TestItem {
     int afterFp = beforeFp + 3;
     testHoneySyrup.applyTo(player);
     assertEquals(afterFp, player.getFp());
+  }
+
+  @Test
+  public void equalTest() {
+    Items item1 = new HoneySyrup();
+    Items item2 = new HoneySyrup();
+    assertEquals(item1.getName(), item2.getName());
   }
 }

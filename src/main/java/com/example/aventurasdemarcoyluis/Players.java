@@ -22,4 +22,8 @@ public interface Players {
   public void setFp(int fp);
 
   public int getMaxHp();
+
+  public void addItem(Items item);
+
+  public void useItem(Items item);
 }
