@@ -2,12 +2,12 @@ package com.example.aventurasdemarcoyluis;
 
 public class RedMushroom implements Items {
 
-  private String name="RedMushroom";
+  private String name = "RedMushroom";
 
   public RedMushroom() {}
 
   public String getName() {
-    return null;
+    return name;
   }
 
   public void applyTo(Players player) {

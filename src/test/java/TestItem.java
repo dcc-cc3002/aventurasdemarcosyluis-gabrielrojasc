@@ -47,6 +47,13 @@ public class TestItem {
   }
 
   @Test
+  public void nameGetterTest() {
+    assertEquals("Star", testStar.getName());
+    assertEquals("RedMushroom", testRedMushroom.getName());
+    assertEquals("HoneySyrup", testHoneySyrup.getName());
+  }
+
+  @Test
   public void equalTest() {
     Items item1 = new HoneySyrup();
     Items item2 = new HoneySyrup();
