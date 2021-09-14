@@ -1,26 +1,20 @@
-import com.example.aventurasdemarcoyluis.Enemies;
-import com.example.aventurasdemarcoyluis.EnemyType;
+import com.example.aventurasdemarcoyluis.Goomba;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class TestEnemy {
 
-  private Enemies testGoomba;
-  private Enemies testBoo;
+  private Goomba testGoomba;
 
   @BeforeEach
   public void setUp() {
-    testGoomba = new Enemies(2, 4, 15, 8, EnemyType.GOOMBA);
-    testBoo = new Enemies(5, 9, 3, 8, EnemyType.BOO);
+    testGoomba = new Goomba(8, 5, 2, 42, 50);
   }
 
   @Test
-  public void constructorTest() {
-    assertEquals(EnemyType.BOO, testBoo.getType());
-    assertEquals(EnemyType.GOOMBA, testGoomba.getType());
+  public void getterTest() {
+    assertEquals(8, testGoomba.getLvl());
   }
 }
