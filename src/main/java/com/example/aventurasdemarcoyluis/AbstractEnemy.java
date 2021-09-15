@@ -9,7 +9,12 @@ public abstract class AbstractEnemy implements Enemies {
   protected int maxHp;
 
   public AbstractEnemy(int LVL, int ATK, int DEF, int HP, int MaxHP) {
-    assert HP >= 0 && HP <= MaxHP;
+    if (MaxHP < 0) {
+      throw new IllegalArgumentException(MaxHP + " is not a valid maxHp.");
+    }
+    if (HP < 0 || HP > MaxHP) {
+      throw new IllegalArgumentException(HP + " is not a valid hp.");
+    }
     this.lvl = LVL;
     this.atk = ATK;
     this.def = DEF;

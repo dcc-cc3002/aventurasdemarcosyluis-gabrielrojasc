@@ -1,3 +1,5 @@
+import com.example.aventurasdemarcoyluis.Enemies;
+import com.example.aventurasdemarcoyluis.Goomba;
 import com.example.aventurasdemarcoyluis.HoneySyrup;
 import com.example.aventurasdemarcoyluis.Items;
 import com.example.aventurasdemarcoyluis.Marco;
@@ -10,6 +12,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
@@ -21,6 +24,29 @@ public class TestPlayer {
   public void setUp() {
     testMarco = new Marco(10, 14, 3, 50, 30, 50);
     testLuis = new Luis(12, 5, 4, 35, 6, 55);
+  }
+
+  @Test
+  public void constructorTest() {
+    Exception exception1 =
+        assertThrows(
+            IllegalArgumentException.class,
+            () -> {
+              Players testExceptionMarco = new Marco(8, 5, 7, 10, 6, 5);
+            });
+    String expectedMessage1 = "is not a valid hp";
+    String actualMessage1 = exception1.getMessage();
+    assertTrue(actualMessage1.contains(expectedMessage1));
+
+    Exception exception2 =
+        assertThrows(
+            IllegalArgumentException.class,
+            () -> {
+              Players testExceptionMarco = new Marco(8, 5, 7, 10, 6, -5);
+            });
+    String expectedMessage2 = "is not a valid maxHp";
+    String actualMessage2 = exception2.getMessage();
+    assertTrue(actualMessage2.contains(expectedMessage2));
   }
 
   @Test
@@ -77,6 +103,26 @@ public class TestPlayer {
     assertEquals(20, testMarco.getHp());
     testLuis.setHp(12);
     assertEquals(12, testLuis.getHp());
+
+    Exception exception1 =
+        assertThrows(
+            IllegalArgumentException.class,
+            () -> {
+              testMarco.setHp(-10);
+            });
+    String expectedMessage1 = "is not a valid hp";
+    String actualMessage1 = exception1.getMessage();
+    assertTrue(actualMessage1.contains(expectedMessage1));
+
+    Exception exception2 =
+        assertThrows(
+            IllegalArgumentException.class,
+            () -> {
+              testMarco.setHp(100);
+            });
+    String expectedMessage2 = "is not a valid hp";
+    String actualMessage2 = exception2.getMessage();
+    assertTrue(actualMessage2.contains(expectedMessage2));
   }
 
   @Test

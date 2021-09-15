@@ -6,6 +6,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
@@ -20,6 +21,29 @@ public class TestEnemy {
     testGoomba = new Goomba(8, 5, 7, 42, 50);
     testSpiny = new Spiny(10, 52, 4, 2, 2);
     testBoo = new Boo(3, 9, 6, 27, 30);
+  }
+
+  @Test
+  public void constructorTest() {
+    Exception exception1 =
+        assertThrows(
+            IllegalArgumentException.class,
+            () -> {
+              Enemies testExceptionGoomba = new Goomba(8, 5, 7, 10, 5);
+            });
+    String expectedMessage1 = "is not a valid hp";
+    String actualMessage1 = exception1.getMessage();
+    assertTrue(actualMessage1.contains(expectedMessage1));
+
+    Exception exception2 =
+        assertThrows(
+            IllegalArgumentException.class,
+            () -> {
+              Enemies testExceptionGoomba = new Goomba(8, 5, 7, 10, -5);
+            });
+    String expectedMessage2 = "is not a valid maxHp";
+    String actualMessage2 = exception2.getMessage();
+    assertTrue(actualMessage2.contains(expectedMessage2));
   }
 
   @Test
@@ -88,6 +112,26 @@ public class TestEnemy {
     assertEquals(1, testSpiny.getHp());
     testBoo.setHp(17);
     assertEquals(17, testBoo.getHp());
+
+    Exception exception1 =
+        assertThrows(
+            IllegalArgumentException.class,
+            () -> {
+              testGoomba.setHp(-10);
+            });
+    String expectedMessage1 = "is not a valid hp";
+    String actualMessage1 = exception1.getMessage();
+    assertTrue(actualMessage1.contains(expectedMessage1));
+
+    Exception exception2 =
+        assertThrows(
+            IllegalArgumentException.class,
+            () -> {
+              testGoomba.setHp(100);
+            });
+    String expectedMessage2 = "is not a valid hp";
+    String actualMessage2 = exception1.getMessage();
+    assertTrue(actualMessage2.contains(expectedMessage2));
   }
 
   @Test

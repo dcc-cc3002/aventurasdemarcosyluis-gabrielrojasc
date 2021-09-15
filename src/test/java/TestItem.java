@@ -57,6 +57,6 @@ public class TestItem {
   public void equalTest() {
     Items item1 = new HoneySyrup();
     Items item2 = new HoneySyrup();
-    assertEquals(item1.getName(), item2.getName());
+    assertEquals(item1, item2);
   }
 }
