@@ -1,13 +1,10 @@
 package com.example.aventurasdemarcoyluis;
 
-public class HoneySyrup implements Items {
+public class HoneySyrup extends abstractItem {
 
-  private String name = "HoneySyrup";
-
-  public HoneySyrup() {}
-
-  public String getName() {
-    return name;
+  public HoneySyrup() {
+    super();
+    this.name = "HoneySyrup";
   }
 
   public void applyTo(Players player) {

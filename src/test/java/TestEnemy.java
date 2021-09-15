@@ -6,6 +6,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 public class TestEnemy {
 
@@ -82,8 +84,8 @@ public class TestEnemy {
   public void hpSetterTest() {
     testGoomba.setHp(6);
     assertEquals(6, testGoomba.getHp());
-    testSpiny.setHp(9);
-    assertEquals(9, testSpiny.getHp());
+    testSpiny.setHp(1);
+    assertEquals(1, testSpiny.getHp());
     testBoo.setHp(17);
     assertEquals(17, testBoo.getHp());
   }
@@ -93,5 +95,18 @@ public class TestEnemy {
     assertEquals(50, testGoomba.getMaxHp());
     assertEquals(2, testSpiny.getMaxHp());
     assertEquals(30, testBoo.getMaxHp());
+  }
+
+  @Test
+  public void isAliveTest() {
+    assertTrue(testGoomba.isKO());
+    assertTrue(testSpiny.isKO());
+    assertTrue(testBoo.isKO());
+    testGoomba.setHp(0);
+    testSpiny.setHp(0);
+    testBoo.setHp(0);
+    assertFalse(testGoomba.isKO());
+    assertFalse(testSpiny.isKO());
+    assertFalse(testBoo.isKO());
   }
 }

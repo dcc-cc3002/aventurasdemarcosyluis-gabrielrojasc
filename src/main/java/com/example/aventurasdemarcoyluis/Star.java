@@ -1,17 +1,13 @@
 package com.example.aventurasdemarcoyluis;
 
-public class Star implements Items {
+public class Star extends abstractItem {
 
-  private String name = "Star";
-
-  public Star() {}
-
-  public String getName() {
-    return name;
+  public Star() {
+    super();
+    this.name = "Star";
   }
 
   public void applyTo(Players player) {
-
     int currHp = player.getHp();
   }
 }

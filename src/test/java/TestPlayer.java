@@ -6,14 +6,12 @@ import com.example.aventurasdemarcoyluis.Players;
 import com.example.aventurasdemarcoyluis.RedMushroom;
 import com.example.aventurasdemarcoyluis.Star;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Hashtable;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 public class TestPlayer {
   private Players testMarco;
@@ -105,6 +103,16 @@ public class TestPlayer {
   public void itemGetterTest() {
     ArrayList<String> items = new ArrayList<>();
     assertEquals(items.toString(), testMarco.getItems());
+  }
+
+  @Test
+  public void isAliveTest() {
+    assertTrue(testMarco.isKO());
+    assertTrue(testLuis.isKO());
+    testMarco.setHp(0);
+    testLuis.setHp(0);
+    assertFalse(testMarco.isKO());
+    assertFalse(testLuis.isKO());
   }
 
   @Test

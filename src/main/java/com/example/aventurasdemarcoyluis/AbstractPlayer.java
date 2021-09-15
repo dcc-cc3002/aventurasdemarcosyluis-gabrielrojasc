@@ -13,6 +13,7 @@ public abstract class AbstractPlayer implements Players {
   protected ArrayList<String> itemList = new ArrayList<>();
 
   public AbstractPlayer(int LVL, int ATK, int DEF, int HP, int FP, int MaxHP) {
+    assert HP >= 0 && HP <= MaxHP;
     this.lvl = LVL;
     this.atk = ATK;
     this.def = DEF;
@@ -50,6 +51,10 @@ public abstract class AbstractPlayer implements Players {
   }
 
   public void setHp(int hp) {
+    if (hp > maxHp || hp < 0) {
+      throw new IllegalArgumentException(
+          hp + " is not a valid hp. hp must be between 0 and " + maxHp);
+    }
     this.hp = hp;
   }
 
@@ -67,6 +72,10 @@ public abstract class AbstractPlayer implements Players {
 
   public String getItems() {
     return itemList.toString();
+  }
+
+  public boolean isKO() {
+    return hp > 0;
   }
 
   public void addItem(Items item) {
