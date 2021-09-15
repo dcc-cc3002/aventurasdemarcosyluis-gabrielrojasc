@@ -1,5 +1,3 @@
-import com.example.aventurasdemarcoyluis.Enemies;
-import com.example.aventurasdemarcoyluis.Goomba;
 import com.example.aventurasdemarcoyluis.HoneySyrup;
 import com.example.aventurasdemarcoyluis.Items;
 import com.example.aventurasdemarcoyluis.Marco;
