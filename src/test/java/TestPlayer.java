@@ -65,6 +65,12 @@ public class TestPlayer {
   public void atkGetterTest() {
     assertEquals(14, testMarco.getAtk());
     assertEquals(5, testLuis.getAtk());
+
+    testMarco.setHp(0);
+    testLuis.setHp(0);
+
+    assertEquals(0, testMarco.getAtk());
+    assertEquals(0, testLuis.getAtk());
   }
 
   @Test

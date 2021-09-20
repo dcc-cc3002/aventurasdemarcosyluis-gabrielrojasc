@@ -116,14 +116,14 @@ public class TestEnemy {
 
   @Test
   public void isAliveTest() {
-    assertTrue(testGoomba.isKO());
-    assertTrue(testSpiny.isKO());
-    assertTrue(testBoo.isKO());
-    testGoomba.setHp(0);
-    testSpiny.setHp(0);
-    testBoo.setHp(0);
     assertFalse(testGoomba.isKO());
     assertFalse(testSpiny.isKO());
     assertFalse(testBoo.isKO());
+    testGoomba.setHp(0);
+    testSpiny.setHp(0);
+    testBoo.setHp(0);
+    assertTrue(testGoomba.isKO());
+    assertTrue(testSpiny.isKO());
+    assertTrue(testBoo.isKO());
   }
 }
