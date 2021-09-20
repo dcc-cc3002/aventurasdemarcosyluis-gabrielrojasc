@@ -1,6 +1,6 @@
 package com.example.aventurasdemarcoyluis;
 
-public abstract class abstractItem implements Items {
+public abstract class abstractItem implements IItems {
 
   protected String name;
 
@@ -12,8 +12,8 @@ public abstract class abstractItem implements Items {
 
   public boolean equals(Object o) {
     if (this == o) return true;
-    if (!(o instanceof Items)) return false;
-    Items item = (Items) o;
+    if (!(o instanceof IItems)) return false;
+    IItems item = (IItems) o;
     return this.getName() == item.getName();
   }
 }

@@ -1,7 +1,7 @@
 import com.example.aventurasdemarcoyluis.HoneySyrup;
-import com.example.aventurasdemarcoyluis.Items;
+import com.example.aventurasdemarcoyluis.IItems;
 import com.example.aventurasdemarcoyluis.Marco;
-import com.example.aventurasdemarcoyluis.Players;
+import com.example.aventurasdemarcoyluis.IPlayers;
 import com.example.aventurasdemarcoyluis.RedMushroom;
 import com.example.aventurasdemarcoyluis.Star;
 import org.junit.jupiter.api.BeforeEach;
@@ -14,7 +14,7 @@ public class TestItem {
   private Star testStar;
   private RedMushroom testRedMushroom;
   private HoneySyrup testHoneySyrup;
-  private Players player;
+  private IPlayers player;
 
   @BeforeEach
   public void setUp() {
@@ -55,8 +55,8 @@ public class TestItem {
 
   @Test
   public void equalTest() {
-    Items item1 = new HoneySyrup();
-    Items item2 = new HoneySyrup();
+    IItems item1 = new HoneySyrup();
+    IItems item2 = new HoneySyrup();
     assertEquals(item1, item2);
   }
 }

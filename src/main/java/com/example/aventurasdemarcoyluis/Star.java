@@ -7,7 +7,7 @@ public class Star extends abstractItem {
     this.name = "Star";
   }
 
-  public void applyTo(Players player) {
+  public void applyTo(IPlayers player) {
     int currHp = player.getHp();
   }
 }

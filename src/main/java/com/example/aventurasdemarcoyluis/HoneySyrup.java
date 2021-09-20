@@ -7,7 +7,7 @@ public class HoneySyrup extends abstractItem {
     this.name = "HoneySyrup";
   }
 
-  public void applyTo(Players player) {
+  public void applyTo(IPlayers player) {
     int currFp = player.getFp();
     player.setFp(currFp + 3);
   }

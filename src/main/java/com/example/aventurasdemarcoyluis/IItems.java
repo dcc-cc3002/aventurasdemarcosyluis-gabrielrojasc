@@ -1,9 +1,9 @@
 package com.example.aventurasdemarcoyluis;
 
-public interface Items {
+public interface IItems {
   public String getName();
 
-  public void applyTo(Players players);
+  public void applyTo(IPlayers players);
 
   @Override
   public boolean equals(Object o);

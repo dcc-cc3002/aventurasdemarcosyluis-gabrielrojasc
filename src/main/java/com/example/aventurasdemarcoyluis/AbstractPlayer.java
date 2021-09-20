@@ -2,7 +2,7 @@ package com.example.aventurasdemarcoyluis;
 
 import java.util.ArrayList;
 
-public abstract class AbstractPlayer implements Players {
+public abstract class AbstractPlayer implements IPlayers {
 
   protected int lvl;
   protected int atk;
@@ -86,11 +86,11 @@ public abstract class AbstractPlayer implements Players {
     return hp == 0;
   }
 
-  public void addItem(Items item) {
+  public void addItem(IItems item) {
     itemList.add(item.getName());
   }
 
-  public void useItem(Items item) {
+  public void useItem(IItems item) {
     if (itemList.contains(item.getName())) {
       item.applyTo(this);
       itemList.remove(item.getName());

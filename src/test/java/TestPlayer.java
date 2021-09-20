@@ -1,8 +1,8 @@
 import com.example.aventurasdemarcoyluis.HoneySyrup;
-import com.example.aventurasdemarcoyluis.Items;
+import com.example.aventurasdemarcoyluis.IItems;
 import com.example.aventurasdemarcoyluis.Marco;
 import com.example.aventurasdemarcoyluis.Luis;
-import com.example.aventurasdemarcoyluis.Players;
+import com.example.aventurasdemarcoyluis.IPlayers;
 import com.example.aventurasdemarcoyluis.RedMushroom;
 import com.example.aventurasdemarcoyluis.Star;
 import java.util.ArrayList;
@@ -15,8 +15,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
 public class TestPlayer {
-  private Players testMarco;
-  private Players testLuis;
+  private IPlayers testMarco;
+  private IPlayers testLuis;
 
   @BeforeEach
   public void setUp() {
@@ -30,7 +30,7 @@ public class TestPlayer {
         assertThrows(
             IllegalArgumentException.class,
             () -> {
-              Players testExceptionMarco = new Marco(8, 5, 7, 10, 6, 5);
+              IPlayers testExceptionMarco = new Marco(8, 5, 7, 10, 6, 5);
             });
     String expectedMessage1 = "is not a valid hp";
     String actualMessage1 = exception1.getMessage();
@@ -40,7 +40,7 @@ public class TestPlayer {
         assertThrows(
             IllegalArgumentException.class,
             () -> {
-              Players testExceptionMarco = new Marco(8, 5, 7, 10, 6, -5);
+              IPlayers testExceptionMarco = new Marco(8, 5, 7, 10, 6, -5);
             });
     String expectedMessage2 = "is not a valid maxHp";
     String actualMessage2 = exception2.getMessage();
@@ -167,8 +167,8 @@ public class TestPlayer {
 
   @Test
   public void addItemTest() {
-    Items redMushroom = new RedMushroom();
-    Items star = new Star();
+    IItems redMushroom = new RedMushroom();
+    IItems star = new Star();
     ArrayList<String> items = new ArrayList<>();
 
     testMarco.addItem(redMushroom);
@@ -184,7 +184,7 @@ public class TestPlayer {
 
   @Test
   public void useItemTest() {
-    Items honeySyrup = new HoneySyrup();
+    IItems honeySyrup = new HoneySyrup();
     ArrayList<String> items = new ArrayList<>();
 
     testMarco.addItem(honeySyrup);

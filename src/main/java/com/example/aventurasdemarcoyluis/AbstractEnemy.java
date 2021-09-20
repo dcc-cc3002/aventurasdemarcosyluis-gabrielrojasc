@@ -1,6 +1,6 @@
 package com.example.aventurasdemarcoyluis;
 
-public abstract class AbstractEnemy implements Enemies {
+public abstract class AbstractEnemy implements IEnemies {
 
   protected int lvl;
   protected int atk;

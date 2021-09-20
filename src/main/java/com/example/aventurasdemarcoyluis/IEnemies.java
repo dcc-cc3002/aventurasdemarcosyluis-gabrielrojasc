@@ -1,6 +1,6 @@
 package com.example.aventurasdemarcoyluis;
 
-public interface Enemies {
+public interface IEnemies {
   public int getLvl();
 
   public void setLvl(int lvl);

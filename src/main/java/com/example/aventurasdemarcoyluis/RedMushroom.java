@@ -7,7 +7,7 @@ public class RedMushroom extends abstractItem {
     this.name = "RedMushroom";
   }
 
-  public void applyTo(Players player) {
+  public void applyTo(IPlayers player) {
     int currHp = player.getHp();
     int maxHp = player.getMaxHp();
     player.setHp(currHp + (int) (maxHp * 0.1));

@@ -1,4 +1,4 @@
-import com.example.aventurasdemarcoyluis.Enemies;
+import com.example.aventurasdemarcoyluis.IEnemies;
 import com.example.aventurasdemarcoyluis.Goomba;
 import com.example.aventurasdemarcoyluis.Spiny;
 import com.example.aventurasdemarcoyluis.Boo;
@@ -12,9 +12,9 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 
 public class TestEnemy {
 
-  private Enemies testGoomba;
-  private Enemies testSpiny;
-  private Enemies testBoo;
+  private IEnemies testGoomba;
+  private IEnemies testSpiny;
+  private IEnemies testBoo;
 
   @BeforeEach
   public void setUp() {
@@ -29,7 +29,7 @@ public class TestEnemy {
         assertThrows(
             IllegalArgumentException.class,
             () -> {
-              Enemies testExceptionGoomba = new Goomba(8, 5, 7, -10);
+              IEnemies testExceptionGoomba = new Goomba(8, 5, 7, -10);
             });
     String expectedMessage = "is not a valid hp";
     String actualMessage = exception.getMessage();

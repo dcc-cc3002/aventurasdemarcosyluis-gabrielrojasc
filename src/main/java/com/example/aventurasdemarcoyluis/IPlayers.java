@@ -1,6 +1,6 @@
 package com.example.aventurasdemarcoyluis;
 
-public interface Players {
+public interface IPlayers {
   public int getLvl();
 
   public void setLvl(int lvl);
@@ -27,7 +27,7 @@ public interface Players {
 
   public boolean isKO();
 
-  public void addItem(Items item);
+  public void addItem(IItems item);
 
-  public void useItem(Items item);
+  public void useItem(IItems item);
 }
