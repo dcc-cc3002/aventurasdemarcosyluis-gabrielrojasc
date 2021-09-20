@@ -17,7 +17,5 @@ public interface Enemies {
 
   public void setHp(int hp);
 
-  public int getMaxHp();
-
   public boolean isKO();
 }

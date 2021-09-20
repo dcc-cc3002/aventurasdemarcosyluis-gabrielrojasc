@@ -151,12 +151,12 @@ public class TestPlayer {
 
   @Test
   public void isAliveTest() {
-    assertTrue(testMarco.isKO());
-    assertTrue(testLuis.isKO());
-    testMarco.setHp(0);
-    testLuis.setHp(0);
     assertFalse(testMarco.isKO());
     assertFalse(testLuis.isKO());
+    testMarco.setHp(0);
+    testLuis.setHp(0);
+    assertTrue(testMarco.isKO());
+    assertTrue(testLuis.isKO());
   }
 
   @Test

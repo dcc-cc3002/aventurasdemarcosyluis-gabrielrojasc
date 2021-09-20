@@ -6,20 +6,15 @@ public abstract class AbstractEnemy implements Enemies {
   protected int atk;
   protected int def;
   protected int hp;
-  protected int maxHp;
 
-  public AbstractEnemy(int LVL, int ATK, int DEF, int HP, int MaxHP) {
-    if (MaxHP < 0) {
-      throw new IllegalArgumentException(MaxHP + " is not a valid maxHp.");
-    }
-    if (HP < 0 || HP > MaxHP) {
+  public AbstractEnemy(int LVL, int ATK, int DEF, int HP) {
+    if (HP < 0) {
       throw new IllegalArgumentException(HP + " is not a valid hp.");
     }
     this.lvl = LVL;
     this.atk = ATK;
     this.def = DEF;
     this.hp = HP;
-    this.maxHp = MaxHP;
   }
 
   public int getLvl() {
@@ -51,18 +46,13 @@ public abstract class AbstractEnemy implements Enemies {
   }
 
   public void setHp(int hp) {
-    if (hp > maxHp || hp < 0) {
-      throw new IllegalArgumentException(
-          hp + " is not a valid hp. hp must be between 0 and " + maxHp);
+    if (hp < 0) {
+      throw new IllegalArgumentException(hp + " is not a valid hp. hp must be greater than 0");
     }
     this.hp = hp;
   }
 
-  public int getMaxHp() {
-    return maxHp;
-  }
-
   public boolean isKO() {
-    return hp > 0;
+    return hp == 0;
   }
 }

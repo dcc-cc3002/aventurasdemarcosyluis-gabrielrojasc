@@ -36,6 +36,9 @@ public abstract class AbstractPlayer implements Players {
   }
 
   public int getAtk() {
+    if (this.isKO()) {
+      return 0;
+    }
     return atk;
   }
 
@@ -80,7 +83,7 @@ public abstract class AbstractPlayer implements Players {
   }
 
   public boolean isKO() {
-    return hp > 0;
+    return hp == 0;
   }
 
   public void addItem(Items item) {
