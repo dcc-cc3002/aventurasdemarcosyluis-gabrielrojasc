@@ -1,33 +1,109 @@
 package com.example.aventurasdemarcoyluis;
 
 public interface IPlayers {
-  public int getLvl();
 
-  public void setLvl(int lvl);
+  /**
+   * getLvl
+   *
+   * @return the lvl of the player
+   */
+  int getLvl();
 
-  public int getAtk();
+  /**
+   * setLvl
+   *
+   * @param lvl the value to set the player lvl to
+   */
+  void setLvl(int lvl);
 
-  public void setAtk(int atk);
+  /**
+   * getAtk
+   *
+   * @return the atk of the player
+   */
+  int getAtk();
 
-  public int getDef();
+  /**
+   * setAtk
+   *
+   * @param atk the value to set the player atk to
+   */
+  void setAtk(int atk);
 
-  public void setDef(int def);
+  /**
+   * getDef
+   *
+   * @return the def of the player
+   */
+  int getDef();
 
-  public int getHp();
+  /**
+   * setDef
+   *
+   * @param def the value to set the player def to
+   */
+  void setDef(int def);
 
-  public void setHp(int hp);
+  /**
+   * getHp
+   *
+   * @return the hp of the player
+   */
+  int getHp();
 
-  public int getFp();
+  /**
+   * setHp
+   *
+   * @param hp the value to set the player hp to
+   */
+  void setHp(int hp);
 
-  public void setFp(int fp);
+  /**
+   * getFp
+   *
+   * @return the fp of the player
+   */
+  int getFp();
 
-  public int getMaxHp();
+  /**
+   * setFp
+   *
+   * @param fp the value to set the player fp to
+   */
+  void setFp(int fp);
 
-  public String getItems();
+  /**
+   * getMaxHp
+   *
+   * @return the maxHp of the player
+   */
+  int getMaxHp();
 
-  public boolean isKO();
+  /**
+   * getItems
+   *
+   * @return the items that the player has
+   */
+  String getItems();
 
-  public void addItem(IItems item);
+  /**
+   * isKO
+   *
+   * @return if the enemy is knocked out or not
+   */
+  boolean isKO();
 
-  public void useItem(IItems item);
+  /**
+   * addItem
+   *
+   * @param item the item to add to the itemList
+   */
+  void addItem(IItems item);
+
+  /**
+   * useItem
+   *
+   * @param item the item to be used by the player
+   */
+  void useItem(IItems item);
 }

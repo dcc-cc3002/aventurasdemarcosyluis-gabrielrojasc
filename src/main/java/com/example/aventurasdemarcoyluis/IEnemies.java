@@ -1,21 +1,67 @@
 package com.example.aventurasdemarcoyluis;
 
 public interface IEnemies {
-  public int getLvl();
 
-  public void setLvl(int lvl);
+  /**
+   * getLvl
+   *
+   * @return the lvl of the enemy
+   */
+  int getLvl();
 
-  public int getAtk();
+  /**
+   * setLvl
+   *
+   * @param lvl the value to set the enemy lvl to
+   */
+  void setLvl(int lvl);
 
-  public void setAtk(int atk);
+  /**
+   * getAtk
+   *
+   * @return the atk of the enemy
+   */
+  int getAtk();
 
-  public int getDef();
+  /**
+   * setAtk
+   *
+   * @param atk the value to set the enemy atk to
+   */
+  void setAtk(int atk);
 
-  public void setDef(int def);
+  /**
+   * getDef
+   *
+   * @return the def of the enemy
+   */
+  int getDef();
 
-  public int getHp();
+  /**
+   * setDef
+   *
+   * @param def the value to set the enemy def to
+   */
+  void setDef(int def);
 
-  public void setHp(int hp);
+  /**
+   * getHp
+   *
+   * @return the hp of the enemy
+   */
+  int getHp();
 
-  public boolean isKO();
+  /**
+   * setHp
+   *
+   * @param hp the value to set the enemy hp to
+   */
+  void setHp(int hp);
+
+  /**
+   * isKO
+   *
+   * @return if the enemy is knocked out or not
+   */
+  boolean isKO();
 }
