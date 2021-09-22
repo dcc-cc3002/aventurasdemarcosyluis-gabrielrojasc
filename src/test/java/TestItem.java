@@ -26,7 +26,9 @@ public class TestItem {
 
   @Test
   public void starTest() {
+    int initialHp = player.getHp();
     testStar.applyTo(player);
+    assertEquals(initialHp, player.getHp());
   }
 
   @Test
