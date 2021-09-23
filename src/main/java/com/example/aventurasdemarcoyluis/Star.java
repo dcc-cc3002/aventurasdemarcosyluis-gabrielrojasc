@@ -1,12 +1,18 @@
 package com.example.aventurasdemarcoyluis;
 
-public class Star extends abstractItem {
+/** Class that represents the item Star */
+public class Star extends AbstractItem {
 
+  /** Create a Star */
   public Star() {
-    super();
-    this.name = "Star";
+    super("Star");
   }
 
+  /**
+   * Applies the item to a player
+   *
+   * @param player the player to apply the item
+   */
   public void applyTo(IPlayers player) {
     int currHp = player.getHp();
     long stopTime = System.currentTimeMillis() + 6000;

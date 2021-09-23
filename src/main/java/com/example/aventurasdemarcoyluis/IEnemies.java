@@ -1,74 +1,51 @@
 package com.example.aventurasdemarcoyluis;
 
+/** Interface that represetns the enemy */
 public interface IEnemies {
 
-  /**
-   * getLvl
-   *
-   * @return the lvl of the enemy
-   */
+  /** Returns the lvl */
   int getLvl();
 
   /**
-   * setLvl
+   * Sets the lvl
    *
-   * @param lvl the value to set the enemy lvl to
+   * @param lvl the lvl to set
    */
   void setLvl(int lvl);
 
-  /**
-   * getAtk
-   *
-   * @return the atk of the enemy
-   */
+  /** Returns the atk */
   int getAtk();
 
   /**
-   * setAtk
+   * Sets the atk
    *
-   * @param atk the value to set the enemy atk to
+   * @param atk the atk to set
    */
   void setAtk(int atk);
 
-  /**
-   * getDef
-   *
-   * @return the def of the enemy
-   */
+  /** Returns the def */
   int getDef();
 
   /**
-   * setDef
+   * Sets the def
    *
-   * @param def the value to set the enemy def to
+   * @param def the def to set
    */
   void setDef(int def);
 
-  /**
-   * getHp
-   *
-   * @return the hp of the enemy
-   */
+  /** Returns the hp */
   int getHp();
 
   /**
-   * setHp
+   * Sets the hp
    *
-   * @param hp the value to set the enemy hp to
+   * @param hp the hp to set
    */
   void setHp(int hp);
 
-  /**
-   * getMaxHp
-   *
-   * @return the maxHp of the enemy
-   */
+  /** Returns the maxHp */
   int getMaxHp();
 
-  /**
-   * isKO
-   *
-   * @return if the enemy is knocked out or not
-   */
+  /** Returns if the enemy is knocked out (hp=0) */
   boolean isKO();
 }

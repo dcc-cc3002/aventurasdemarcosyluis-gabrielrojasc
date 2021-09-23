@@ -1,18 +1,15 @@
 package com.example.aventurasdemarcoyluis;
 
+/** Interface that represents the item */
 public interface IItems {
 
-  /**
-   * getName
-   *
-   * @return the name of the item
-   */
+  /** Returns the name */
   String getName();
 
   /**
-   * applyTo
+   * Applies the item to a player
    *
-   * @param player the player to apply the item to
+   * @param player the player to apply the item
    */
   void applyTo(IPlayers player);
 
@@ -20,7 +17,7 @@ public interface IItems {
    * equals method override
    *
    * @param o the object to compare to
-   * @return if o equals this
+   * @return if o equals itself
    */
   @Override
   boolean equals(Object o);

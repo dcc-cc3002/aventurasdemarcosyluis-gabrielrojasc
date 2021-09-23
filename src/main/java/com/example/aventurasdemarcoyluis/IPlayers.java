@@ -1,116 +1,81 @@
 package com.example.aventurasdemarcoyluis;
 
+/** Interfaces that represents the players */
 public interface IPlayers {
 
-  /**
-   * getLvl
-   *
-   * @return the lvl of the player
-   */
+  /** Returns the lvl */
   int getLvl();
 
   /**
-   * setLvl
+   * Sets the lvl
    *
-   * @param lvl the value to set the player lvl to
+   * @param lvl the lvl to set
    */
   void setLvl(int lvl);
 
-  /**
-   * getAtk
-   *
-   * @return the atk of the player
-   */
+  /** Returns the atk */
   int getAtk();
 
   /**
-   * setAtk
+   * Sets the atk
    *
-   * @param atk the value to set the player atk to
+   * @param atk the atk to set
    */
   void setAtk(int atk);
 
-  /**
-   * getDef
-   *
-   * @return the def of the player
-   */
+  /** Returns the def */
   int getDef();
 
   /**
-   * setDef
+   * Sets the def
    *
-   * @param def the value to set the player def to
+   * @param def the def to set
    */
   void setDef(int def);
 
-  /**
-   * getHp
-   *
-   * @return the hp of the player
-   */
+  /** Returns the hp */
   int getHp();
 
   /**
-   * setHp
+   * Sets the hp
    *
-   * @param hp the value to set the player hp to
+   * @param hp the hp to set
    */
   void setHp(int hp);
 
-  /**
-   * getFp
-   *
-   * @return the fp of the player
-   */
+  /** Returns the fp */
   int getFp();
 
   /**
-   * setFp
+   * Sets the fp
    *
-   * @param fp the value to set the player fp to
+   * @param fp the fp to set
    */
   void setFp(int fp);
 
-  /**
-   * getMaxHp
-   *
-   * @return the maxHp of the player
-   */
+  /** Returns the maxHp */
   int getMaxHp();
 
-  /**
-   * getMaxFp
-   * @return the maxFp of the player
-   */
+  /** Returns the maxFp */
   int getMaxFp();
 
-  /**
-   * getItems
-   *
-   * @return the items that the player has
-   */
+  /** Returns the items that the player has */
   String getItems();
 
-  /**
-   * isKO
-   *
-   * @return if the enemy is knocked out or not
-   */
+  /** Returns if the enemy is knocked out (hp=0) */
   boolean isKO();
 
   /**
-   * addItem
+   * Adds an item to the itemList
    *
    * @param item the item to add to the itemList
    */
   void addItem(IItems item);
 
   /**
-   * useItem
+   * Uses an item if the item is on the itemList
    *
-   * @param item the item to be used by the player
+   * @param item the item to be used
    */
   void useItem(IItems item);
-
 }

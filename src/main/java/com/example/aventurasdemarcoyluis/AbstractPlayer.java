@@ -2,6 +2,7 @@ package com.example.aventurasdemarcoyluis;
 
 import java.util.ArrayList;
 
+/** Class that represents a player */
 public abstract class AbstractPlayer implements IPlayers {
 
   protected int lvl;
@@ -13,6 +14,21 @@ public abstract class AbstractPlayer implements IPlayers {
   protected int maxFp;
   protected ArrayList<String> itemList = new ArrayList<>();
 
+  /**
+   * Creates a player
+   *
+   * @param LVL the lvl of the player
+   * @param ATK the atk of the player
+   * @param DEF the def of the player
+   * @param HP the hp of the player
+   * @throws IllegalArgumentException if HP is less than 0 or greater than MaxHP
+   * @param FP the fp of the player
+   * @throws IllegalArgumentException if FP is less than 0 or greater than MaxFP
+   * @param MaxHP the maxHp of the player
+   * @throws IllegalArgumentException if MaxHP is less than 0
+   * @param MaxFP the maxFp of the player
+   * @throws IllegalArgumentException if MaxFP is less than 0
+   */
   public AbstractPlayer(int LVL, int ATK, int DEF, int HP, int FP, int MaxHP, int MaxFP) {
     if (MaxHP < 0) {
       throw new IllegalArgumentException(
@@ -39,14 +55,21 @@ public abstract class AbstractPlayer implements IPlayers {
     this.maxFp = MaxFP;
   }
 
+  /** Returns the lvl */
   public int getLvl() {
     return lvl;
   }
 
+  /**
+   * Sets the lvl
+   *
+   * @param lvl the lvl to set
+   */
   public void setLvl(int lvl) {
     this.lvl = lvl;
   }
 
+  /** Returns the atk */
   public int getAtk() {
     if (this.isKO()) {
       return 0;
@@ -54,22 +77,40 @@ public abstract class AbstractPlayer implements IPlayers {
     return atk;
   }
 
+  /**
+   * Sets the atk
+   *
+   * @param atk the atk to set
+   */
   public void setAtk(int atk) {
     this.atk = atk;
   }
 
+  /** Returns the def */
   public int getDef() {
     return def;
   }
 
+  /**
+   * Sets the def
+   *
+   * @param def the def to set
+   */
   public void setDef(int def) {
     this.def = def;
   }
 
+  /** Returns the hp */
   public int getHp() {
     return hp;
   }
 
+  /**
+   * Sets the hp
+   *
+   * @param hp the hp to set
+   * @throws IllegalArgumentException if hp is less than 0 or greater than maxHp
+   */
   public void setHp(int hp) {
     if (hp > maxHp || hp < 0) {
       throw new IllegalArgumentException(
@@ -78,10 +119,17 @@ public abstract class AbstractPlayer implements IPlayers {
     this.hp = hp;
   }
 
+  /** Returns the fp */
   public int getFp() {
     return fp;
   }
 
+  /**
+   * Sets the fp
+   *
+   * @param fp the fp to set
+   * @throws IllegalArgumentException if fp is less than 0 or greater than maxFp
+   */
   public void setFp(int fp) {
     if (fp > maxFp || fp < 0) {
       throw new IllegalArgumentException(
@@ -90,26 +138,40 @@ public abstract class AbstractPlayer implements IPlayers {
     this.fp = fp;
   }
 
+  /** Returns the maxHp */
   public int getMaxHp() {
     return maxHp;
   }
 
+  /** Returns the maxFp */
   public int getMaxFp() {
     return maxFp;
   }
 
+  /** Returns the items that the player has */
   public String getItems() {
     return itemList.toString();
   }
 
+  /** Returns if the enemy is knocked out (hp=0) */
   public boolean isKO() {
     return hp == 0;
   }
 
+  /**
+   * Adds an item to the itemList
+   *
+   * @param item the item to add to the itemList
+   */
   public void addItem(IItems item) {
     itemList.add(item.getName());
   }
 
+  /**
+   * Uses an item if the item is on the itemList
+   *
+   * @param item the item to be used
+   */
   public void useItem(IItems item) {
     if (itemList.contains(item.getName())) {
       item.applyTo(this);

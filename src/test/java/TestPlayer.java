@@ -1,18 +1,18 @@
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import com.example.aventurasdemarcoyluis.HoneySyrup;
 import com.example.aventurasdemarcoyluis.IItems;
-import com.example.aventurasdemarcoyluis.Marco;
-import com.example.aventurasdemarcoyluis.Luis;
 import com.example.aventurasdemarcoyluis.IPlayers;
+import com.example.aventurasdemarcoyluis.Luis;
+import com.example.aventurasdemarcoyluis.Marco;
 import com.example.aventurasdemarcoyluis.RedMushroom;
 import com.example.aventurasdemarcoyluis.Star;
 import java.util.ArrayList;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.junit.jupiter.api.Assertions.assertFalse;
 
 public class TestPlayer {
   private IPlayers testMarco;

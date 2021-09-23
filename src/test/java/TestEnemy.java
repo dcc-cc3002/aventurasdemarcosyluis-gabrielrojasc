@@ -1,14 +1,14 @@
-import com.example.aventurasdemarcoyluis.IEnemies;
-import com.example.aventurasdemarcoyluis.Goomba;
-import com.example.aventurasdemarcoyluis.Spiny;
-import com.example.aventurasdemarcoyluis.Boo;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.junit.jupiter.api.Assertions.assertFalse;
+
+import com.example.aventurasdemarcoyluis.Boo;
+import com.example.aventurasdemarcoyluis.Goomba;
+import com.example.aventurasdemarcoyluis.IEnemies;
+import com.example.aventurasdemarcoyluis.Spiny;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 public class TestEnemy {
 

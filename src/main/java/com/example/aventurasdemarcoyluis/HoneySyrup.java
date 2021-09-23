@@ -1,12 +1,18 @@
 package com.example.aventurasdemarcoyluis;
 
-public class HoneySyrup extends abstractItem {
+/** Class that represents the item Honey Syrup */
+public class HoneySyrup extends AbstractItem {
 
+  /** Create a Honey Syrup */
   public HoneySyrup() {
-    super();
-    this.name = "HoneySyrup";
+    super("HoneySyrup");
   }
 
+  /**
+   * Applies the item to a player
+   *
+   * @param player the player to apply the item
+   */
   public void applyTo(IPlayers player) {
     int currFp = player.getFp();
     int maxFp = player.getMaxFp();
