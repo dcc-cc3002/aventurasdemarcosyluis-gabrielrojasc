@@ -14,6 +14,7 @@ public abstract class abstractItem implements IItems {
 
   public abstract void applyTo(IPlayers player);
 
+  @Override
   public boolean equals(Object o) {
     if (this == o) return true;
     if (!(o instanceof IItems item)) return false;
