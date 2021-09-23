@@ -9,6 +9,11 @@ public class HoneySyrup extends abstractItem {
 
   public void applyTo(IPlayers player) {
     int currFp = player.getFp();
-    player.setFp(currFp + 3);
+    int maxFp = player.getMaxFp();
+    if (currFp + 3 > maxFp) {
+      player.setFp(maxFp);
+    } else {
+      player.setFp(currFp + 3);
+    }
   }
 }

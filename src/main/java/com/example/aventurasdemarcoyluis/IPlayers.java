@@ -80,6 +80,12 @@ public interface IPlayers {
   int getMaxHp();
 
   /**
+   * getMaxFp
+   * @return the maxFp of the player
+   */
+  int getMaxFp();
+
+  /**
    * getItems
    *
    * @return the items that the player has
@@ -106,4 +112,5 @@ public interface IPlayers {
    * @param item the item to be used by the player
    */
   void useItem(IItems item);
+
 }

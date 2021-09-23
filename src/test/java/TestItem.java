@@ -21,7 +21,7 @@ public class TestItem {
     testStar = new Star();
     testRedMushroom = new RedMushroom();
     testHoneySyrup = new HoneySyrup();
-    player = new Marco(10, 5, 2, 5, 10, 10);
+    player = new Marco(10, 5, 2, 5, 10, 10, 10);
   }
 
   @Test
@@ -42,10 +42,17 @@ public class TestItem {
 
   @Test
   public void honeySyrupTest() {
+    player.setFp(0);
     int beforeFp = player.getFp();
+    int maxFp = player.getMaxFp();
     int afterFp = beforeFp + 3;
+
     testHoneySyrup.applyTo(player);
     assertEquals(afterFp, player.getFp());
+
+    player.setFp(maxFp);
+    testHoneySyrup.applyTo(player);
+    assertEquals(maxFp, player.getFp());
   }
 
   @Test

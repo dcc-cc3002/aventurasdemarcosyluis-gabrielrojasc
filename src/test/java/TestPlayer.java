@@ -20,8 +20,8 @@ public class TestPlayer {
 
   @BeforeEach
   public void setUp() {
-    testMarco = new Marco(10, 14, 3, 50, 30, 50);
-    testLuis = new Luis(12, 5, 4, 35, 6, 55);
+    testMarco = new Marco(10, 14, 3, 50, 30, 50, 50);
+    testLuis = new Luis(12, 5, 4, 35, 6, 55, 18);
   }
 
   @Test
@@ -30,7 +30,7 @@ public class TestPlayer {
         assertThrows(
             IllegalArgumentException.class,
             () -> {
-              IPlayers testExceptionMarco = new Marco(8, 5, 7, 10, 6, 5);
+              IPlayers testExceptionMarco = new Marco(8, 5, 7, 10, 6, 5, 18);
             });
     String expectedMessage1 = "is not a valid hp";
     String actualMessage1 = exception1.getMessage();
@@ -40,11 +40,31 @@ public class TestPlayer {
         assertThrows(
             IllegalArgumentException.class,
             () -> {
-              IPlayers testExceptionMarco = new Marco(8, 5, 7, 10, 6, -5);
+              IPlayers testExceptionMarco = new Marco(8, 5, 7, 10, 6, -5, 10);
             });
     String expectedMessage2 = "is not a valid maxHp";
     String actualMessage2 = exception2.getMessage();
     assertTrue(actualMessage2.contains(expectedMessage2));
+
+    Exception exception3 =
+        assertThrows(
+            IllegalArgumentException.class,
+            () -> {
+              IPlayers testExceptionMarco = new Marco(8, 5, 7, 10, 60, 50, 10);
+            });
+    String expectedMessage3 = "is not a valid fp";
+    String actualMessage3 = exception3.getMessage();
+    assertTrue(actualMessage3.contains(expectedMessage3));
+
+    Exception exception4 =
+        assertThrows(
+            IllegalArgumentException.class,
+            () -> {
+              IPlayers testExceptionMarco = new Marco(8, 5, 7, 10, 6, 50, -10);
+            });
+    String expectedMessage4 = "is not a valid maxFp";
+    String actualMessage4 = exception4.getMessage();
+    assertTrue(actualMessage4.contains(expectedMessage4));
   }
 
   @Test
@@ -108,22 +128,12 @@ public class TestPlayer {
     testLuis.setHp(12);
     assertEquals(12, testLuis.getHp());
 
-    Exception exception1 =
-        assertThrows(
-            IllegalArgumentException.class,
-            () -> {
-              testMarco.setHp(-10);
-            });
+    Exception exception1 = assertThrows(IllegalArgumentException.class, () -> testMarco.setHp(-10));
     String expectedMessage1 = "is not a valid hp";
     String actualMessage1 = exception1.getMessage();
     assertTrue(actualMessage1.contains(expectedMessage1));
 
-    Exception exception2 =
-        assertThrows(
-            IllegalArgumentException.class,
-            () -> {
-              testMarco.setHp(100);
-            });
+    Exception exception2 = assertThrows(IllegalArgumentException.class, () -> testMarco.setHp(100));
     String expectedMessage2 = "is not a valid hp";
     String actualMessage2 = exception2.getMessage();
     assertTrue(actualMessage2.contains(expectedMessage2));
@@ -133,6 +143,16 @@ public class TestPlayer {
   public void fpGetterTest() {
     assertEquals(30, testMarco.getFp());
     assertEquals(6, testLuis.getFp());
+
+    Exception exception1 = assertThrows(IllegalArgumentException.class, () -> testMarco.setFp(-10));
+    String expectedMessage1 = "is not a valid fp";
+    String actualMessage1 = exception1.getMessage();
+    assertTrue(actualMessage1.contains(expectedMessage1));
+
+    Exception exception2 = assertThrows(IllegalArgumentException.class, () -> testMarco.setFp(100));
+    String expectedMessage2 = "is not a valid fp";
+    String actualMessage2 = exception2.getMessage();
+    assertTrue(actualMessage2.contains(expectedMessage2));
   }
 
   @Test

@@ -59,6 +59,13 @@ public interface IEnemies {
   void setHp(int hp);
 
   /**
+   * getMaxHp
+   *
+   * @return the maxHp of the enemy
+   */
+  int getMaxHp();
+
+  /**
    * isKO
    *
    * @return if the enemy is knocked out or not

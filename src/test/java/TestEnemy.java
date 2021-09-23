@@ -18,22 +18,42 @@ public class TestEnemy {
 
   @BeforeEach
   public void setUp() {
-    testGoomba = new Goomba(8, 5, 7, 42);
-    testSpiny = new Spiny(10, 52, 4, 2);
-    testBoo = new Boo(3, 9, 6, 27);
+    testGoomba = new Goomba(8, 5, 7, 42, 67);
+    testSpiny = new Spiny(10, 52, 4, 2, 10);
+    testBoo = new Boo(3, 9, 6, 27, 47);
   }
 
   @Test
   public void constructorTest() {
-    Exception exception =
+    Exception exception1 =
         assertThrows(
             IllegalArgumentException.class,
             () -> {
-              IEnemies testExceptionGoomba = new Goomba(8, 5, 7, -10);
+              IEnemies testExceptionGoomba = new Goomba(8, 5, 7, 10, -100);
             });
-    String expectedMessage = "is not a valid hp";
-    String actualMessage = exception.getMessage();
-    assertTrue(actualMessage.contains(expectedMessage));
+    String expectedMessage1 = "is not a valid maxHp";
+    String actualMessage1 = exception1.getMessage();
+    assertTrue(actualMessage1.contains(expectedMessage1));
+
+    Exception exception2 =
+        assertThrows(
+            IllegalArgumentException.class,
+            () -> {
+              IEnemies testExceptionGoomba = new Goomba(8, 5, 7, -10, 100);
+            });
+    String expectedMessage2 = "is not a valid hp";
+    String actualMessage2 = exception2.getMessage();
+    assertTrue(actualMessage2.contains(expectedMessage2));
+
+    Exception exception3 =
+        assertThrows(
+            IllegalArgumentException.class,
+            () -> {
+              IEnemies testExceptionGoomba = new Goomba(8, 5, 7, 150, 100);
+            });
+    String expectedMessage3 = "is not a valid hp";
+    String actualMessage3 = exception3.getMessage();
+    assertTrue(actualMessage3.contains(expectedMessage3));
   }
 
   @Test
@@ -103,15 +123,23 @@ public class TestEnemy {
     testBoo.setHp(17);
     assertEquals(17, testBoo.getHp());
 
-    Exception exception =
-        assertThrows(
-            IllegalArgumentException.class,
-            () -> {
-              testGoomba.setHp(-10);
-            });
-    String expectedMessage = "is not a valid hp";
-    String actualMessage = exception.getMessage();
-    assertTrue(actualMessage.contains(expectedMessage));
+    Exception exception1 =
+        assertThrows(IllegalArgumentException.class, () -> testGoomba.setHp(-13));
+    String expectedMessage1 = "is not a valid hp";
+    String actualMessage1 = exception1.getMessage();
+    assertTrue(actualMessage1.contains(expectedMessage1));
+
+    Exception exception2 = assertThrows(IllegalArgumentException.class, () -> testGoomba.setHp(73));
+    String expectedMessage2 = "is not a valid hp";
+    String actualMessage2 = exception2.getMessage();
+    assertTrue(actualMessage2.contains(expectedMessage2));
+  }
+
+  @Test
+  public void maxHpGetterTest() {
+    assertEquals(67, testGoomba.getMaxHp());
+    assertEquals(10, testSpiny.getMaxHp());
+    assertEquals(47, testBoo.getMaxHp());
   }
 
   @Test
