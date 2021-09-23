@@ -15,7 +15,7 @@ public abstract class AbstractPlayer implements IPlayers {
   protected ArrayList<String> itemList = new ArrayList<>();
 
   /**
-   * Creates a player
+   * Create a player
    *
    * @param LVL the lvl of the player
    * @param ATK the atk of the player

@@ -10,7 +10,7 @@ public abstract class AbstractEnemy implements IEnemies {
   protected int maxHp;
 
   /**
-   * Creates an enemy
+   * Create an enemy
    *
    * @param LVL the lvl of the enemy
    * @param ATK the atk of the enemy

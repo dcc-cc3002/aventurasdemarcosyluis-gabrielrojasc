@@ -8,7 +8,7 @@ public abstract class AbstractItem implements IItems {
   protected String name;
 
   /**
-   * Creates an item
+   * Create an item
    *
    * @param NAME the name of the item
    */
