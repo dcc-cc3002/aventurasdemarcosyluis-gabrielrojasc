@@ -26,36 +26,40 @@ public class TestPlayer {
 
   @Test
   public void constructorTest() {
+    /* Can't create a new player if maxHp is less than 0 */
     Exception exception1 =
-        assertThrows(
-            IllegalArgumentException.class,
-            () -> {
-              IPlayers testExceptionMarco = new Marco(8, 5, 7, 10, 6, 5, 18);
-            });
-    String expectedMessage1 = "is not a valid hp";
-    String actualMessage1 = exception1.getMessage();
-    assertTrue(actualMessage1.contains(expectedMessage1));
-
-    Exception exception2 =
         assertThrows(
             IllegalArgumentException.class,
             () -> {
               IPlayers testExceptionMarco = new Marco(8, 5, 7, 10, 6, -5, 10);
             });
-    String expectedMessage2 = "is not a valid maxHp";
+    String expectedMessage1 = "is not a valid maxHp";
+    String actualMessage1 = exception1.getMessage();
+    assertTrue(actualMessage1.contains(expectedMessage1));
+
+    /* Can't create a new enemy if the hp is less than 0 */
+    Exception exception2 =
+        assertThrows(
+            IllegalArgumentException.class,
+            () -> {
+              IPlayers testExceptionMarco = new Marco(8, 5, 7, -10, 6, 5, 18);
+            });
+    String expectedMessage2 = "is not a valid hp";
     String actualMessage2 = exception2.getMessage();
     assertTrue(actualMessage2.contains(expectedMessage2));
 
+    /* Can't create a new enemy if the hp is greater than maxHp */
     Exception exception3 =
         assertThrows(
             IllegalArgumentException.class,
             () -> {
-              IPlayers testExceptionMarco = new Marco(8, 5, 7, 10, 60, 50, 10);
+              IPlayers testExceptionMarco = new Marco(8, 5, 7, 10, 6, 5, 18);
             });
-    String expectedMessage3 = "is not a valid fp";
+    String expectedMessage3 = "is not a valid hp";
     String actualMessage3 = exception3.getMessage();
     assertTrue(actualMessage3.contains(expectedMessage3));
 
+    /* Can't create a new player if maxFp is less than 0 */
     Exception exception4 =
         assertThrows(
             IllegalArgumentException.class,
@@ -65,6 +69,28 @@ public class TestPlayer {
     String expectedMessage4 = "is not a valid maxFp";
     String actualMessage4 = exception4.getMessage();
     assertTrue(actualMessage4.contains(expectedMessage4));
+
+    /* Can't create a new enemy if the fp is less than 0 */
+    Exception exception5 =
+        assertThrows(
+            IllegalArgumentException.class,
+            () -> {
+              IPlayers testExceptionMarco = new Marco(8, 5, 7, 10, -6, 50, 10);
+            });
+    String expectedMessage5 = "is not a valid fp";
+    String actualMessage5 = exception5.getMessage();
+    assertTrue(actualMessage5.contains(expectedMessage5));
+
+    /* Can't create a new enemy if the fp is greater than maxFp */
+    Exception exception6 =
+        assertThrows(
+            IllegalArgumentException.class,
+            () -> {
+              IPlayers testExceptionMarco = new Marco(8, 5, 7, 10, 60, 50, 10);
+            });
+    String expectedMessage6 = "is not a valid fp";
+    String actualMessage6 = exception6.getMessage();
+    assertTrue(actualMessage6.contains(expectedMessage6));
   }
 
   @Test

@@ -25,6 +25,7 @@ public class TestEnemy {
 
   @Test
   public void constructorTest() {
+    /* Can't create a new enemy if maxHp is less than 0 */
     Exception exception1 =
         assertThrows(
             IllegalArgumentException.class,
@@ -35,6 +36,7 @@ public class TestEnemy {
     String actualMessage1 = exception1.getMessage();
     assertTrue(actualMessage1.contains(expectedMessage1));
 
+    /* Can't create a new enemy if the hp is less than 0 */
     Exception exception2 =
         assertThrows(
             IllegalArgumentException.class,
@@ -45,6 +47,7 @@ public class TestEnemy {
     String actualMessage2 = exception2.getMessage();
     assertTrue(actualMessage2.contains(expectedMessage2));
 
+    /* Can't create a new enemy if the hp is greater than maxHp */
     Exception exception3 =
         assertThrows(
             IllegalArgumentException.class,
@@ -123,12 +126,14 @@ public class TestEnemy {
     testBoo.setHp(17);
     assertEquals(17, testBoo.getHp());
 
+    /* Can't set the hp of the enemy to a number smaller than 0 */
     Exception exception1 =
         assertThrows(IllegalArgumentException.class, () -> testGoomba.setHp(-13));
     String expectedMessage1 = "is not a valid hp";
     String actualMessage1 = exception1.getMessage();
     assertTrue(actualMessage1.contains(expectedMessage1));
 
+    /* Can't set the hp of the enemy to a number greater than maxHp */
     Exception exception2 = assertThrows(IllegalArgumentException.class, () -> testGoomba.setHp(73));
     String expectedMessage2 = "is not a valid hp";
     String actualMessage2 = exception2.getMessage();
