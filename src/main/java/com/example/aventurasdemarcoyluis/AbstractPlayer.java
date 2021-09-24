@@ -12,7 +12,7 @@ public abstract class AbstractPlayer implements IPlayers {
   protected int fp;
   protected int maxHp;
   protected int maxFp;
-  protected ArrayList<String> itemList = new ArrayList<>();
+  protected ArrayList<IItems> itemList = new ArrayList<>();
 
   /**
    * Create a player
@@ -149,8 +149,8 @@ public abstract class AbstractPlayer implements IPlayers {
   }
 
   /** Returns the items that the player has */
-  public String getItems() {
-    return itemList.toString();
+  public ArrayList getItems() {
+    return itemList;
   }
 
   /** Returns if the enemy is knocked out (hp=0) */
@@ -164,7 +164,7 @@ public abstract class AbstractPlayer implements IPlayers {
    * @param item the item to add to the itemList
    */
   public void addItem(IItems item) {
-    itemList.add(item.getName());
+    itemList.add(item);
   }
 
   /**
@@ -173,9 +173,9 @@ public abstract class AbstractPlayer implements IPlayers {
    * @param item the item to be used
    */
   public void useItem(IItems item) {
-    if (itemList.contains(item.getName())) {
+    if (itemList.contains(item)) {
       item.applyTo(this);
-      itemList.remove(item.getName());
+      itemList.remove(item);
     }
   }
 }

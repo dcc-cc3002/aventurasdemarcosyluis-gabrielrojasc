@@ -197,8 +197,8 @@ public class TestPlayer {
 
   @Test
   public void itemGetterTest() {
-    ArrayList<String> items = new ArrayList<>();
-    assertEquals(items.toString(), testMarco.getItems());
+    ArrayList<IItems> items = new ArrayList<>();
+    assertEquals(items, testMarco.getItems());
   }
 
   @Test
@@ -215,34 +215,34 @@ public class TestPlayer {
   public void addItemTest() {
     IItems redMushroom = new RedMushroom();
     IItems star = new Star();
-    ArrayList<String> items = new ArrayList<>();
+    ArrayList<IItems> items = new ArrayList<>();
 
     testMarco.addItem(redMushroom);
-    items.add(redMushroom.getName());
+    items.add(redMushroom);
 
-    assertEquals(items.toString(), testMarco.getItems());
+    assertEquals(items, testMarco.getItems());
 
     testMarco.addItem(star);
-    items.add(star.getName());
+    items.add(star);
 
-    assertEquals(items.toString(), testMarco.getItems());
+    assertEquals(items, testMarco.getItems());
   }
 
   @Test
   public void useItemTest() {
     IItems honeySyrup = new HoneySyrup();
-    ArrayList<String> items = new ArrayList<>();
+    ArrayList<IItems> items = new ArrayList<>();
 
     testMarco.addItem(honeySyrup);
-    items.add(honeySyrup.getName());
-    assertEquals(items.toString(), testMarco.getItems());
+    items.add(honeySyrup);
+    assertEquals(items, testMarco.getItems());
 
     int beforeFp = testMarco.getFp();
     testMarco.useItem(honeySyrup);
     int afterFp = beforeFp + 3;
     assertEquals(afterFp, testMarco.getFp());
-    items.remove(honeySyrup.getName());
+    items.remove(honeySyrup);
 
-    assertEquals(items.toString(), testMarco.getItems());
+    assertEquals(items, testMarco.getItems());
   }
 }

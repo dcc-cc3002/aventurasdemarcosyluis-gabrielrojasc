@@ -1,5 +1,7 @@
 package com.example.aventurasdemarcoyluis;
 
+import java.util.ArrayList;
+
 /** Interfaces that represents the players */
 public interface IPlayers {
 
@@ -60,7 +62,7 @@ public interface IPlayers {
   int getMaxFp();
 
   /** Returns the items that the player has */
-  String getItems();
+  ArrayList getItems();
 
   /** Returns if the enemy is knocked out (hp=0) */
   boolean isKO();
