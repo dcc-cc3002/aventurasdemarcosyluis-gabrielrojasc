@@ -56,6 +56,7 @@ public abstract class AbstractPlayer implements IPlayers {
   }
 
   /** Returns the lvl */
+  @Override
   public int getLvl() {
     return lvl;
   }
@@ -65,11 +66,13 @@ public abstract class AbstractPlayer implements IPlayers {
    *
    * @param lvl the lvl to set
    */
+  @Override
   public void setLvl(int lvl) {
     this.lvl = lvl;
   }
 
   /** Returns the atk */
+  @Override
   public int getAtk() {
     if (this.isKO()) {
       return 0;
@@ -82,11 +85,13 @@ public abstract class AbstractPlayer implements IPlayers {
    *
    * @param atk the atk to set
    */
+  @Override
   public void setAtk(int atk) {
     this.atk = atk;
   }
 
   /** Returns the def */
+  @Override
   public int getDef() {
     return def;
   }
@@ -96,11 +101,13 @@ public abstract class AbstractPlayer implements IPlayers {
    *
    * @param def the def to set
    */
+  @Override
   public void setDef(int def) {
     this.def = def;
   }
 
   /** Returns the hp */
+  @Override
   public int getHp() {
     return hp;
   }
@@ -111,6 +118,7 @@ public abstract class AbstractPlayer implements IPlayers {
    * @param hp the hp to set
    * @throws IllegalArgumentException if hp is less than 0 or greater than maxHp
    */
+  @Override
   public void setHp(int hp) {
     if (hp > maxHp || hp < 0) {
       throw new IllegalArgumentException(
@@ -120,6 +128,7 @@ public abstract class AbstractPlayer implements IPlayers {
   }
 
   /** Returns the fp */
+  @Override
   public int getFp() {
     return fp;
   }
@@ -130,6 +139,7 @@ public abstract class AbstractPlayer implements IPlayers {
    * @param fp the fp to set
    * @throws IllegalArgumentException if fp is less than 0 or greater than maxFp
    */
+  @Override
   public void setFp(int fp) {
     if (fp > maxFp || fp < 0) {
       throw new IllegalArgumentException(
@@ -139,21 +149,25 @@ public abstract class AbstractPlayer implements IPlayers {
   }
 
   /** Returns the maxHp */
+  @Override
   public int getMaxHp() {
     return maxHp;
   }
 
   /** Returns the maxFp */
+  @Override
   public int getMaxFp() {
     return maxFp;
   }
 
   /** Returns the items that the player has */
+  @Override
   public ArrayList getItems() {
     return itemList;
   }
 
   /** Returns if the enemy is knocked out (hp=0) */
+  @Override
   public boolean isKO() {
     return hp == 0;
   }
@@ -163,6 +177,7 @@ public abstract class AbstractPlayer implements IPlayers {
    *
    * @param item the item to add to the itemList
    */
+  @Override
   public void addItem(IItems item) {
     itemList.add(item);
   }
@@ -172,6 +187,7 @@ public abstract class AbstractPlayer implements IPlayers {
    *
    * @param item the item to be used
    */
+  @Override
   public void useItem(IItems item) {
     if (itemList.contains(item)) {
       item.applyTo(this);

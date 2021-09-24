@@ -13,6 +13,7 @@ public class Star extends AbstractItem {
    *
    * @param player the player to apply the item
    */
+  @Override
   public void applyTo(IPlayers player) {
     int currHp = player.getHp();
     long stopTime = System.currentTimeMillis() + 6000;

@@ -13,6 +13,7 @@ public class HoneySyrup extends AbstractItem {
    *
    * @param player the player to apply the item
    */
+  @Override
   public void applyTo(IPlayers player) {
     int currFp = player.getFp();
     int maxFp = player.getMaxFp();

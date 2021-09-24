@@ -37,6 +37,7 @@ public abstract class AbstractEnemy implements IEnemies {
   }
 
   /** Returns the lvl */
+  @Override
   public int getLvl() {
     return lvl;
   }
@@ -46,11 +47,13 @@ public abstract class AbstractEnemy implements IEnemies {
    *
    * @param lvl the lvl to set
    */
+  @Override
   public void setLvl(int lvl) {
     this.lvl = lvl;
   }
 
   /** Returns the atk */
+  @Override
   public int getAtk() {
     return atk;
   }
@@ -60,11 +63,13 @@ public abstract class AbstractEnemy implements IEnemies {
    *
    * @param atk the atk to set
    */
+  @Override
   public void setAtk(int atk) {
     this.atk = atk;
   }
 
   /** Returns the def */
+  @Override
   public int getDef() {
     return def;
   }
@@ -74,11 +79,13 @@ public abstract class AbstractEnemy implements IEnemies {
    *
    * @param def the def to set
    */
+  @Override
   public void setDef(int def) {
     this.def = def;
   }
 
   /** Returns the hp */
+  @Override
   public int getHp() {
     return hp;
   }
@@ -89,6 +96,7 @@ public abstract class AbstractEnemy implements IEnemies {
    * @param hp the hp to set
    * @throws IllegalArgumentException if hp is less than 0 or greater than maxHp
    */
+  @Override
   public void setHp(int hp) {
     if (hp < 0 || hp > maxHp) {
       throw new IllegalArgumentException(
@@ -98,11 +106,13 @@ public abstract class AbstractEnemy implements IEnemies {
   }
 
   /** Returns the maxHp */
+  @Override
   public int getMaxHp() {
     return maxHp;
   }
 
   /** Returns if the enemy is knocked out (hp=0) */
+  @Override
   public boolean isKO() {
     return hp == 0;
   }

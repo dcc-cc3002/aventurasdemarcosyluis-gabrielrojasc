@@ -17,6 +17,7 @@ public abstract class AbstractItem implements IItems {
   }
 
   /** Returns the name */
+  @Override
   public String getName() {
     return name;
   }
@@ -26,6 +27,7 @@ public abstract class AbstractItem implements IItems {
    *
    * @param player the player to apply the item
    */
+  @Override
   public abstract void applyTo(IPlayers player);
 
   /**

@@ -13,6 +13,7 @@ public class RedMushroom extends AbstractItem {
    *
    * @param player the player to apply the item
    */
+  @Override
   public void applyTo(IPlayers player) {
     int currHp = player.getHp();
     int maxHp = player.getMaxHp();
