@@ -1,4 +1,6 @@
-package com.example.aventurasdemarcoyluis;
+package item;
+
+import player.IPlayers;
 
 /** Class that represents the item Star */
 public class Star extends AbstractItem {

@@ -1,6 +1,7 @@
-package com.example.aventurasdemarcoyluis;
+package item;
 
 import java.util.Objects;
+import player.IPlayers;
 
 /** Class that represents an item */
 public abstract class AbstractItem implements IItems {

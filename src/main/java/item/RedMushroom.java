@@ -1,4 +1,6 @@
-package com.example.aventurasdemarcoyluis;
+package item;
+
+import player.IPlayers;
 
 /** Class that represetn the item Red Mushroom */
 public class RedMushroom extends AbstractItem {

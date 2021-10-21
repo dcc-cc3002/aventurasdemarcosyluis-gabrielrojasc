@@ -1,4 +1,6 @@
-package com.example.aventurasdemarcoyluis;
+package item;
+
+import player.IPlayers;
 
 /** Interface that represents the item */
 public interface IItems {

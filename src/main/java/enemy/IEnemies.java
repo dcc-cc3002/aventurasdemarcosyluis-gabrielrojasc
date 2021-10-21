@@ -1,4 +1,4 @@
-package com.example.aventurasdemarcoyluis;
+package enemy;
 
 /** Interface that represetns the enemy */
 public interface IEnemies {

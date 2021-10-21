@@ -1,4 +1,4 @@
-package com.example.aventurasdemarcoyluis;
+package enemy;
 
 /** Class that represents the character Goomba */
 public class Goomba extends AbstractEnemy {

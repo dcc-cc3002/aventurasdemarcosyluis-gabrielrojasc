@@ -1,4 +1,4 @@
-package com.example.aventurasdemarcoyluis;
+package enemy;
 
 /** Class that represents an enemy */
 public abstract class AbstractEnemy implements IEnemies {

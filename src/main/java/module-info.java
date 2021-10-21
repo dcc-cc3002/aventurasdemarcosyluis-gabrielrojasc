@@ -2,8 +2,18 @@ module com.example.aventurasdemarcoyluis {
   requires javafx.controls;
   requires javafx.fxml;
 
-  opens com.example.aventurasdemarcoyluis to
+  exports enemy;
+
+  opens enemy to
       javafx.fxml;
 
-  exports com.example.aventurasdemarcoyluis;
+  exports item;
+
+  opens item to
+      javafx.fxml;
+
+  exports player;
+
+  opens player to
+      javafx.fxml;
 }

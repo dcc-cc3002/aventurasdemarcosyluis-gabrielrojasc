@@ -1,5 +1,6 @@
-package com.example.aventurasdemarcoyluis;
+package player;
 
+import item.IItems;
 import java.util.ArrayList;
 
 /** Class that represents a player */

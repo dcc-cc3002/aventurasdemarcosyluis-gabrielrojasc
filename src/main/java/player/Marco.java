@@ -1,4 +1,4 @@
-package com.example.aventurasdemarcoyluis;
+package player;
 
 /** Class that represent the character Marco */
 public class Marco extends AbstractPlayer {
