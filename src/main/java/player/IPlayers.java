@@ -1,7 +1,10 @@
 package player;
 
+import enemy.Boo;
+import enemy.Goomba;
+import enemy.IEnemies;
+import enemy.Spiny;
 import item.IItems;
-import java.util.ArrayList;
 
 /** Interfaces that represents the players */
 public interface IPlayers {
@@ -64,13 +67,6 @@ public interface IPlayers {
 
   /** Returns if the enemy is knocked out (hp=0) */
   boolean isKO();
-
-  /**
-   * Adds an item to the itemList
-   *
-   * @param item the item to add to the itemList
-   */
-  void addItem(IItems item, ItemVault vault);
 
   /**
    * Uses an item if the item is on the itemList

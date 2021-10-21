@@ -1,5 +1,6 @@
 package player;
 
+import enemy.IEnemies;
 import item.IItems;
 
 /** Class that represents a player */
@@ -163,16 +164,6 @@ public abstract class AbstractPlayer implements IPlayers {
   @Override
   public boolean isKO() {
     return hp == 0;
-  }
-
-  /**
-   * Adds an item to the itemList
-   *
-   * @param item the item to add to the itemList
-   */
-  @Override
-  public void addItem(IItems item, ItemVault vault) {
-    vault.addItem(item);
   }
 
   /**

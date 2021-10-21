@@ -220,12 +220,12 @@ public class TestPlayer {
     IItems star = new Star();
     ArrayList<IItems> items = new ArrayList<>();
 
-    testMarco.addItem(redMushroom, vault);
+    vault.addItem(redMushroom);
     items.add(redMushroom);
 
     assertEquals(items, vault.getItems());
 
-    testMarco.addItem(star, vault);
+    vault.addItem(star);
     items.add(star);
 
     assertEquals(items, vault.getItems());
@@ -237,7 +237,7 @@ public class TestPlayer {
     IItems honeySyrup = new HoneySyrup();
     ArrayList<IItems> items = new ArrayList<>();
 
-    testMarco.addItem(honeySyrup, vault);
+    vault.addItem(honeySyrup);
     items.add(honeySyrup);
     assertEquals(items, vault.getItems());
 
