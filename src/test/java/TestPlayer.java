@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import player.IPlayers;
+import player.ItemVault;
 import player.Luis;
 import player.Marco;
 
@@ -196,12 +197,6 @@ public class TestPlayer {
   }
 
   @Test
-  public void itemGetterTest() {
-    ArrayList<IItems> items = new ArrayList<>();
-    assertEquals(items, testMarco.getItems());
-  }
-
-  @Test
   public void isAliveTest() {
     assertFalse(testMarco.isKO());
     assertFalse(testLuis.isKO());
@@ -212,37 +207,46 @@ public class TestPlayer {
   }
 
   @Test
+  public void getItemTest() {
+    ArrayList<IItems> items = new ArrayList<>();
+    ItemVault vault = new ItemVault();
+    assertEquals(items, vault.getItems());
+  }
+
+  @Test
   public void addItemTest() {
+    ItemVault vault = new ItemVault();
     IItems redMushroom = new RedMushroom();
     IItems star = new Star();
     ArrayList<IItems> items = new ArrayList<>();
 
-    testMarco.addItem(redMushroom);
+    testMarco.addItem(redMushroom, vault);
     items.add(redMushroom);
 
-    assertEquals(items, testMarco.getItems());
+    assertEquals(items, vault.getItems());
 
-    testMarco.addItem(star);
+    testMarco.addItem(star, vault);
     items.add(star);
 
-    assertEquals(items, testMarco.getItems());
+    assertEquals(items, vault.getItems());
   }
 
   @Test
   public void useItemTest() {
+    ItemVault vault = new ItemVault();
     IItems honeySyrup = new HoneySyrup();
     ArrayList<IItems> items = new ArrayList<>();
 
-    testMarco.addItem(honeySyrup);
+    testMarco.addItem(honeySyrup, vault);
     items.add(honeySyrup);
-    assertEquals(items, testMarco.getItems());
+    assertEquals(items, vault.getItems());
 
     int beforeFp = testMarco.getFp();
-    testMarco.useItem(honeySyrup);
+    testMarco.useItem(honeySyrup, vault);
     int afterFp = beforeFp + 3;
     assertEquals(afterFp, testMarco.getFp());
     items.remove(honeySyrup);
 
-    assertEquals(items, testMarco.getItems());
+    assertEquals(items, vault.getItems());
   }
 }

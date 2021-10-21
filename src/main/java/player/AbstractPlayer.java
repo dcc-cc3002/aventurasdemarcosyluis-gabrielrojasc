@@ -1,7 +1,6 @@
 package player;
 
 import item.IItems;
-import java.util.ArrayList;
 
 /** Class that represents a player */
 public abstract class AbstractPlayer implements IPlayers {
@@ -13,7 +12,6 @@ public abstract class AbstractPlayer implements IPlayers {
   protected int fp;
   protected int maxHp;
   protected int maxFp;
-  protected ArrayList<IItems> itemList = new ArrayList<>();
 
   /**
    * Create a player
@@ -161,12 +159,6 @@ public abstract class AbstractPlayer implements IPlayers {
     return maxFp;
   }
 
-  /** Returns the items that the player has */
-  @Override
-  public ArrayList getItems() {
-    return itemList;
-  }
-
   /** Returns if the enemy is knocked out (hp=0) */
   @Override
   public boolean isKO() {
@@ -179,8 +171,8 @@ public abstract class AbstractPlayer implements IPlayers {
    * @param item the item to add to the itemList
    */
   @Override
-  public void addItem(IItems item) {
-    itemList.add(item);
+  public void addItem(IItems item, ItemVault vault) {
+    vault.addItem(item);
   }
 
   /**
@@ -189,10 +181,7 @@ public abstract class AbstractPlayer implements IPlayers {
    * @param item the item to be used
    */
   @Override
-  public void useItem(IItems item) {
-    if (itemList.contains(item)) {
-      item.applyTo(this);
-      itemList.remove(item);
-    }
+  public void useItem(IItems item, ItemVault vault) {
+    vault.useItem(item, this);
   }
 }

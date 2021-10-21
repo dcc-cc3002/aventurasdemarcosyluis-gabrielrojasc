@@ -62,9 +62,6 @@ public interface IPlayers {
   /** Returns the maxFp */
   int getMaxFp();
 
-  /** Returns the items that the player has */
-  ArrayList getItems();
-
   /** Returns if the enemy is knocked out (hp=0) */
   boolean isKO();
 
@@ -73,12 +70,12 @@ public interface IPlayers {
    *
    * @param item the item to add to the itemList
    */
-  void addItem(IItems item);
+  void addItem(IItems item, ItemVault vault);
 
   /**
    * Uses an item if the item is on the itemList
    *
    * @param item the item to be used
    */
-  void useItem(IItems item);
+  void useItem(IItems item, ItemVault vault);
 }
