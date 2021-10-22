@@ -4,6 +4,7 @@ import enemy.Goomba;
 import enemy.IEnemies;
 import enemy.Spiny;
 import item.IItems;
+import java.util.Random;
 
 /** Interfaces that represents the players */
 public interface IPlayers {
@@ -73,6 +74,8 @@ public interface IPlayers {
    * @param item the item to be used
    */
   void useItem(IItems item, ItemVault vault);
+
+  void setRandSeed(int seed);
 
   void receiveDmg(int dmg);
 

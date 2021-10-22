@@ -183,19 +183,25 @@ public abstract class AbstractPlayer implements IPlayers {
   }
 
   @Override
+  public void setRandSeed(int seed) {
+    rand.setSeed(seed);
+  }
+
+  @Override
   public void receiveDmg(int dmg) {
-    this.setHp(Math.max(0, dmg));
+    int newHp = this.getHp() - dmg;
+    this.setHp(Math.max(0, newHp));
   }
 
   @Override
   public int getJumpDmg(IEnemies anEnemy) {
-    float dmg = this.getAtk() * ((float) this.getLvl() / (float) anEnemy.getLvl());
+    float dmg = this.getAtk() * ((float) this.getLvl() / (float) anEnemy.getDef());
     return Math.round(dmg);
   }
 
   @Override
   public int getHammerDmg(IEnemies anEnemy) {
-    float dmg = (float) 1.5 - this.getAtk() * ((float) this.getLvl() / (float) anEnemy.getLvl());
+    float dmg = (float) 1.5 * this.getAtk() * ((float) this.getLvl() / (float) anEnemy.getDef());
     return Math.round(dmg);
   }
 

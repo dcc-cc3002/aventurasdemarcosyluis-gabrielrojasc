@@ -121,7 +121,8 @@ public abstract class AbstractEnemy implements IEnemies {
 
   @Override
   public void receiveDmg(int dmg) {
-    this.setHp(Math.max(0, dmg));
+    int newHp = this.getHp() - dmg;
+    this.setHp(Math.max(0, newHp));
   }
 
   @Override

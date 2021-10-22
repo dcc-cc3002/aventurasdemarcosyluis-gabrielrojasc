@@ -3,6 +3,10 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import enemy.Boo;
+import enemy.Goomba;
+import enemy.IEnemies;
+import enemy.Spiny;
 import item.HoneySyrup;
 import item.IItems;
 import item.RedMushroom;
@@ -16,8 +20,8 @@ import player.Luis;
 import player.Marco;
 
 public class TestPlayer {
-  private IPlayers testMarco;
-  private IPlayers testLuis;
+  private Marco testMarco;
+  private Luis testLuis;
 
   @BeforeEach
   public void setUp() {
@@ -248,5 +252,127 @@ public class TestPlayer {
     items.remove(honeySyrup);
 
     assertEquals(items, vault.getItems());
+  }
+
+  @Test
+  public void setRandSeedTest() {
+    IEnemies testGoomba1 = new Goomba(10, 50, 50, 100, 100);
+    testMarco.setRandSeed(2);
+
+    testMarco.hammerAttackEnemy(testGoomba1);
+    assertEquals(100, testGoomba1.getHp());
+    testMarco.hammerAttackEnemy(testGoomba1);
+    assertEquals(100, testGoomba1.getHp());
+    testMarco.hammerAttackEnemy(testGoomba1);
+    assertEquals(100, testGoomba1.getHp());
+    testMarco.hammerAttackEnemy(testGoomba1);
+    assertEquals(96, testGoomba1.getHp());
+  }
+
+  @Test
+  public void receiveDmgTest() {
+    int beforeHp = testMarco.getHp();
+    int dmg = 10;
+    int afterHp = beforeHp - dmg;
+    testMarco.receiveDmg(dmg);
+
+    assertEquals(afterHp, testMarco.getHp());
+  }
+
+  @Test
+  public void getJumpDmgTest() {
+    IEnemies testGoomba = new Goomba(1, 5, 5, 10, 10);
+    int expectedJumpDmg =
+        Math.round(testMarco.getAtk() * ((float) testMarco.getLvl() / (float) testGoomba.getDef()));
+
+    assertEquals(expectedJumpDmg, testMarco.getJumpDmg(testGoomba));
+  }
+
+  @Test
+  public void getHammerDmgTest() {
+    IEnemies testGoomba = new Goomba(1, 5, 5, 10, 10);
+    int expectedHammerDmg =
+        Math.round(
+            (float) 1.5
+                * testMarco.getAtk()
+                * ((float) testMarco.getLvl() / (float) testGoomba.getDef()));
+
+    assertEquals(expectedHammerDmg, testMarco.getHammerDmg(testGoomba));
+  }
+
+  @Test
+  public void jumpAttackEnemyTest() {
+    IEnemies testGoomba1 = new Goomba(1, 5, 5, 10, 10);
+    IEnemies testGoomba2 = new Goomba(10, 50, 50, 100, 100);
+    IEnemies testSpiny = new Spiny(10, 50, 50, 100, 100);
+
+    int expectedGoomba1Hp = Math.max(0, testGoomba1.getHp() - testMarco.getJumpDmg(testGoomba1));
+    int expectedGoomba2Hp = Math.max(0, testGoomba2.getHp() - testMarco.getJumpDmg(testGoomba2));
+    int expectedSpinyHp = testSpiny.getHp();
+    int expectedMarcoHp = Math.round(testMarco.getHp() * (float) 0.95);
+
+    testMarco.jumpAttackEnemy(testGoomba1);
+    testMarco.jumpAttackEnemy(testGoomba2);
+    testMarco.jumpAttackEnemy(testSpiny);
+
+    assertEquals(expectedGoomba1Hp, testGoomba1.getHp());
+    assertEquals(expectedGoomba2Hp, testGoomba2.getHp());
+    assertEquals(expectedSpinyHp, testSpiny.getHp());
+    assertEquals(expectedMarcoHp, testMarco.getHp());
+  }
+
+  @Test
+  public void hammerAttackEnemyTest() {
+    IEnemies testGoomba1 = new Goomba(1, 5, 5, 10, 10);
+    IEnemies testGoomba2 = new Goomba(10, 50, 50, 100, 100);
+    IEnemies testBoo = new Boo(10, 50, 50, 100, 100);
+
+    testMarco.setRandSeed(1);
+
+    int expectedGoomba1Hp = testGoomba1.getHp(); // not hit
+    int expectedGoomba2Hp =
+        Math.max(0, testGoomba2.getHp() - testMarco.getHammerDmg(testGoomba2)); // hit
+    int expectedBooHp = testBoo.getHp();
+
+    testMarco.hammerAttackEnemy(testGoomba1);
+    testMarco.hammerAttackEnemy(testGoomba2);
+    testMarco.hammerAttackEnemy(testBoo);
+
+    assertEquals(expectedGoomba1Hp, testGoomba1.getHp());
+    assertEquals(expectedGoomba2Hp, testGoomba2.getHp());
+    assertEquals(expectedBooHp, testBoo.getHp());
+  }
+
+  @Test
+  public void attackedByGoombaTest() {
+    Goomba testGoomba = new Goomba(10, 5, 5, 10, 10);
+
+    int expectedMarcoHp = testMarco.getHp() - testGoomba.getDmg(testMarco);
+
+    testMarco.attackedByGoomba(testGoomba);
+
+    assertEquals(expectedMarcoHp, testMarco.getHp());
+  }
+
+  @Test
+  public void attackedBySpinyTest() {
+    Spiny testSpiny = new Spiny(10, 5, 5, 10, 10);
+
+    int expectedMarcoHp = testMarco.getHp() - testSpiny.getDmg(testMarco);
+
+    testMarco.attackedBySpiny(testSpiny);
+
+    assertEquals(expectedMarcoHp, testMarco.getHp());
+  }
+
+  @Test
+  public void attackedByBooTest() {
+    Boo testBoo = new Boo(10, 5, 5, 10, 10);
+
+    int expectedLuisHp = testLuis.getHp() - testBoo.getDmg(testLuis);
+
+    testLuis.attackedByBoo(testBoo);
+
+    assertEquals(expectedLuisHp, testLuis.getHp());
   }
 }
