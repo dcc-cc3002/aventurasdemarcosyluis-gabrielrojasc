@@ -27,10 +27,10 @@ public class Boo extends AbstractEnemy implements IAttackableByLuis, IAttackable
   }
 
   @Override
-  public void jumpAttackedByLuis(Luis aLuis) {
+  public void jumpAttackedByPlayer(Luis aLuis) {
     this.receiveDmg(aLuis.getJumpDmg(this));
   }
 
   @Override
-  public void hammerAttackedByLuis(Luis aLuis) {}
+  public void hammerAttackedByPlayer(Luis aLuis) {}
 }

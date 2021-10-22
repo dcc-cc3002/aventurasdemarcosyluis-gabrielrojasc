@@ -83,12 +83,4 @@ public interface IPlayers {
   int getJumpDmg(IEnemies anEnemy);
 
   int getHammerDmg(IEnemies anEnemy);
-
-  void jumpAttackEnemy(IAttackableByPlayer anEnemy);
-
-  void hammerAttackEnemy(IAttackableByPlayer anEnemy);
-
-  void attackedByGoomba(Goomba aGoomba);
-
-  void attackedBySpiny(Spiny aSpiny);
 }

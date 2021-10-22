@@ -1,10 +1,14 @@
 package player;
 
 import enemy.Boo;
+import enemy.interfaces.IAttackableByLuis;
 import player.interfaces.IAttackableByBoo;
+import player.interfaces.IAttackableByGoomba;
+import player.interfaces.IAttackableByLuisAttacker;
+import player.interfaces.IAttackableBySpiny;
 
 /** Class that represents the character Luis */
-public class Luis extends AbstractPlayer implements IAttackableByBoo {
+public class Luis extends AbstractPlayer implements IAttackableByBoo, IAttackableByLuisAttacker {
 
   /**
    * Create a Luis
@@ -19,6 +23,16 @@ public class Luis extends AbstractPlayer implements IAttackableByBoo {
    */
   public Luis(int LVL, int ATK, int DEF, int HP, int FP, int MaxHP, int MaxFP) {
     super(LVL, ATK, DEF, HP, FP, MaxHP, MaxFP);
+  }
+
+  @Override
+  public void jumpAttackEnemy(IAttackableByLuis anEnemy) {
+    anEnemy.jumpAttackedByPlayer(this);
+  }
+
+  @Override
+  public void hammerAttackEnemy(IAttackableByLuis anEnemy) {
+    anEnemy.hammerAttackedByPlayer(this);
   }
 
   @Override

@@ -1,11 +1,13 @@
 package enemy;
 
 import enemy.interfaces.IAttackableByPlayer;
-import enemy.interfaces.IPlayerAttacker;
+import enemy.interfaces.IAttackableBySpinyAttacker;
+import player.interfaces.IAttackableBySpiny;
 import player.interfaces.IPlayers;
 
 /** Class that represents the character Spiny */
-public class Spiny extends AbstractEnemy implements IPlayerAttacker, IAttackableByPlayer {
+public class Spiny extends AbstractEnemy
+    implements IAttackableByPlayer, IAttackableBySpinyAttacker {
 
   /**
    * Create a Spiny
@@ -21,7 +23,7 @@ public class Spiny extends AbstractEnemy implements IPlayerAttacker, IAttackable
   }
 
   @Override
-  public void attackPlayer(IPlayers aPlayer) {
+  public void attackPlayer(IAttackableBySpiny aPlayer) {
     aPlayer.attackedBySpiny(this);
   }
 

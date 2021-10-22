@@ -6,10 +6,14 @@ import enemy.interfaces.IAttackableByPlayer;
 import enemy.interfaces.IEnemies;
 import item.IItems;
 import java.util.Random;
+import player.interfaces.IAttackableByGoomba;
+import player.interfaces.IAttackableByPlayerAttacker;
+import player.interfaces.IAttackableBySpiny;
 import player.interfaces.IPlayers;
 
 /** Class that represents a player */
-public abstract class AbstractPlayer implements IPlayers {
+public abstract class AbstractPlayer
+    implements IPlayers, IAttackableByGoomba, IAttackableBySpiny, IAttackableByPlayerAttacker {
 
   protected int lvl;
   protected int atk;

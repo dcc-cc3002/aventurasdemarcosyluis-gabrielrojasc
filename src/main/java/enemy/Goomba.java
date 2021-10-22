@@ -1,11 +1,13 @@
 package enemy;
 
+import enemy.interfaces.IAttackableByGoombaAttacker;
 import enemy.interfaces.IAttackableByPlayer;
-import enemy.interfaces.IPlayerAttacker;
+import player.interfaces.IAttackableByGoomba;
 import player.interfaces.IPlayers;
 
 /** Class that represents the character Goomba */
-public class Goomba extends AbstractEnemy implements IAttackableByPlayer, IPlayerAttacker {
+public class Goomba extends AbstractEnemy
+    implements IAttackableByPlayer, IAttackableByGoombaAttacker {
 
   /**
    * Create a Goomba
@@ -21,7 +23,7 @@ public class Goomba extends AbstractEnemy implements IAttackableByPlayer, IPlaye
   }
 
   @Override
-  public void attackPlayer(IPlayers aPlayer) {
+  public void attackPlayer(IAttackableByGoomba aPlayer) {
     aPlayer.attackedByGoomba(this);
   }
 

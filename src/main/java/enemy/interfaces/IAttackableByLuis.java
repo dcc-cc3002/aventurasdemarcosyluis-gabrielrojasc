@@ -3,7 +3,7 @@ package enemy.interfaces;
 import player.Luis;
 
 public interface IAttackableByLuis {
-  void jumpAttackedByLuis(Luis aLuis);
+  void jumpAttackedByPlayer(Luis aLuis);
 
-  void hammerAttackedByLuis(Luis aLuis);
+  void hammerAttackedByPlayer(Luis aLuis);
 }

@@ -3,31 +3,21 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import item.HoneySyrup;
 import item.IItems;
 import item.RedMushroom;
-import item.Star;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import player.Marco;
 
 public class TestItem {
 
-  private Star testStar;
   private RedMushroom testRedMushroom;
   private HoneySyrup testHoneySyrup;
   private Marco player;
 
   @BeforeEach
   public void setUp() {
-    testStar = new Star();
     testRedMushroom = new RedMushroom();
     testHoneySyrup = new HoneySyrup();
     player = new Marco(10, 5, 2, 5, 10, 10, 10);
-  }
-
-  @Test
-  public void starTest() {
-    int initialHp = player.getHp();
-    testStar.applyTo(player);
-    assertEquals(initialHp, player.getHp());
   }
 
   @Test
@@ -56,7 +46,6 @@ public class TestItem {
 
   @Test
   public void nameGetterTest() {
-    assertEquals("Star", testStar.getName());
     assertEquals("RedMushroom", testRedMushroom.getName());
     assertEquals("HoneySyrup", testHoneySyrup.getName());
   }

@@ -10,7 +10,6 @@ import enemy.interfaces.IEnemies;
 import item.HoneySyrup;
 import item.IItems;
 import item.RedMushroom;
-import item.Star;
 import java.util.ArrayList;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -221,7 +220,7 @@ public class TestPlayer {
   public void addItemTest() {
     ItemVault vault = new ItemVault();
     IItems redMushroom = new RedMushroom();
-    IItems star = new Star();
+    IItems honeySyrup = new HoneySyrup();
     ArrayList<IItems> items = new ArrayList<>();
 
     vault.addItem(redMushroom);
@@ -229,8 +228,8 @@ public class TestPlayer {
 
     assertEquals(items, vault.getItems());
 
-    vault.addItem(star);
-    items.add(star);
+    vault.addItem(honeySyrup);
+    items.add(honeySyrup);
 
     assertEquals(items, vault.getItems());
   }

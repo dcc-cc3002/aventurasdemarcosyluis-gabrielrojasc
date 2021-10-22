@@ -188,7 +188,7 @@ public class TestEnemy {
   public void jumpAttackedByPlayerTest() {
     Marco testMarco = new Marco(10, 20, 20, 50, 30, 50, 30);
 
-    int expectedGoombaHp = testGoomba.getHp() - testMarco.getJumpDmg(testGoomba);
+    int expectedGoombaHp = Math.max(0, testGoomba.getHp() - testMarco.getJumpDmg(testGoomba));
     int expectedSpinyHp = testSpiny.getHp();
 
     testGoomba.jumpAttackedByPlayer(testMarco);
@@ -199,5 +199,29 @@ public class TestEnemy {
   }
 
   @Test
-  public void hammerAttackedByPlayerTest() {}
+  public void hammerAttackedByPlayerTest() {
+    Luis testLuis = new Luis(10, 20, 20, 50, 30, 50, 30);
+
+    testLuis.setRandSeed(1);
+
+    // No hit
+    int expectedGoombaHp1 = testGoomba.getHp();
+    testLuis.hammerAttackEnemy(testGoomba);
+    assertEquals(expectedGoombaHp1, testGoomba.getHp());
+
+    // Hit
+    int expectedGoombaHp2 = Math.max(0, testGoomba.getHp() - testLuis.getHammerDmg(testGoomba));
+    testLuis.hammerAttackEnemy(testGoomba);
+    assertEquals(expectedGoombaHp2, testGoomba.getHp());
+
+    // No hit
+    int expectedBooHp1 = testBoo.getHp();
+    testLuis.hammerAttackEnemy(testBoo);
+    assertEquals(expectedBooHp1, testBoo.getHp());
+
+    // Hit
+    int expectedBooHp2 = testBoo.getHp();
+    testLuis.hammerAttackEnemy(testBoo);
+    assertEquals(expectedBooHp2, testBoo.getHp());
+  }
 }
