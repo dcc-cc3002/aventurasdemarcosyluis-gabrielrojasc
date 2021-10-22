@@ -1,9 +1,11 @@
 package enemy;
 
-import player.IPlayers;
+import enemy.interfaces.IAttackableByPlayer;
+import enemy.interfaces.IPlayerAttacker;
+import player.interfaces.IPlayers;
 
 /** Class that represents the character Spiny */
-public class Spiny extends AbstractEnemy implements IPlayerAttacker {
+public class Spiny extends AbstractEnemy implements IPlayerAttacker, IAttackableByPlayer {
 
   /**
    * Create a Spiny
@@ -18,6 +20,7 @@ public class Spiny extends AbstractEnemy implements IPlayerAttacker {
     super(LVL, ATK, DEF, HP, MaxHP);
   }
 
+  @Override
   public void attackPlayer(IPlayers aPlayer) {
     aPlayer.attackedBySpiny(this);
   }
@@ -26,5 +29,10 @@ public class Spiny extends AbstractEnemy implements IPlayerAttacker {
   public void jumpAttackedByPlayer(IPlayers aPlayer) {
     int newHp = Math.round(aPlayer.getHp() * (float) 0.95);
     aPlayer.setHp(Math.max(0, newHp));
+  }
+
+  @Override
+  public void hammerAttackedByPlayer(IPlayers aPlayer) {
+    this.receiveDmg(aPlayer.getHammerDmg(this));
   }
 }

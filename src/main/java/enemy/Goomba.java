@@ -1,9 +1,11 @@
 package enemy;
 
-import player.IPlayers;
+import enemy.interfaces.IAttackableByPlayer;
+import enemy.interfaces.IPlayerAttacker;
+import player.interfaces.IPlayers;
 
 /** Class that represents the character Goomba */
-public class Goomba extends AbstractEnemy implements IPlayerAttacker {
+public class Goomba extends AbstractEnemy implements IAttackableByPlayer, IPlayerAttacker {
 
   /**
    * Create a Goomba
@@ -18,7 +20,18 @@ public class Goomba extends AbstractEnemy implements IPlayerAttacker {
     super(LVL, ATK, DEF, HP, MaxHP);
   }
 
+  @Override
   public void attackPlayer(IPlayers aPlayer) {
     aPlayer.attackedByGoomba(this);
+  }
+
+  @Override
+  public void jumpAttackedByPlayer(IPlayers aPlayer) {
+    this.receiveDmg(aPlayer.getJumpDmg(this));
+  }
+
+  @Override
+  public void hammerAttackedByPlayer(IPlayers aPlayer) {
+    this.receiveDmg(aPlayer.getHammerDmg(this));
   }
 }

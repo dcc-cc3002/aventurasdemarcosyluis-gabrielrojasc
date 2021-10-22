@@ -1,6 +1,7 @@
 package enemy;
 
-import player.IPlayers;
+import enemy.interfaces.IEnemies;
+import player.interfaces.IPlayers;
 
 /** Class that represents an enemy */
 public abstract class AbstractEnemy implements IEnemies {
@@ -129,15 +130,5 @@ public abstract class AbstractEnemy implements IEnemies {
   public int getDmg(IPlayers aPlayer) {
     float dmg = (float) 0.75 * this.getAtk() * ((float) this.getLvl() / (float) aPlayer.getDef());
     return Math.round(dmg);
-  }
-
-  @Override
-  public void jumpAttackedByPlayer(IPlayers aPlayer) {
-    this.receiveDmg(aPlayer.getJumpDmg(this));
-  }
-
-  @Override
-  public void hammerAttackedByPlayer(IPlayers aPlayer) {
-    this.receiveDmg(aPlayer.getHammerDmg(this));
   }
 }

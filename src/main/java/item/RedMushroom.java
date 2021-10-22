@@ -1,6 +1,6 @@
 package item;
 
-import player.IPlayers;
+import player.interfaces.IPlayers;
 
 /** Class that represetn the item Red Mushroom */
 public class RedMushroom extends AbstractItem {

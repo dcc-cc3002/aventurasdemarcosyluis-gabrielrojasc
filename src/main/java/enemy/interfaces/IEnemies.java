@@ -1,6 +1,6 @@
-package enemy;
+package enemy.interfaces;
 
-import player.IPlayers;
+import player.interfaces.IPlayers;
 
 /** Interface that represetns the enemy */
 public interface IEnemies {
@@ -54,8 +54,4 @@ public interface IEnemies {
   void receiveDmg(int dmg);
 
   int getDmg(IPlayers aPlayer);
-
-  void jumpAttackedByPlayer(IPlayers aPlayer);
-
-  void hammerAttackedByPlayer(IPlayers aPlayer);
 }

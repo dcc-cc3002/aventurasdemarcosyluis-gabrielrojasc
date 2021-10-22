@@ -1,6 +1,7 @@
 package player;
 
 import enemy.Boo;
+import player.interfaces.IAttackableByBoo;
 
 /** Class that represents the character Luis */
 public class Luis extends AbstractPlayer implements IAttackableByBoo {

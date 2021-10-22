@@ -1,6 +1,6 @@
-package enemy;
+package enemy.interfaces;
 
-import player.IPlayers;
+import player.interfaces.IPlayers;
 
 public interface IPlayerAttacker {
   void attackPlayer(IPlayers aPlayer);

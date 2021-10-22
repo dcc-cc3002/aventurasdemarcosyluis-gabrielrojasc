@@ -16,4 +16,14 @@ module com.example.aventurasdemarcoyluis {
 
   opens player to
       javafx.fxml;
+
+  exports enemy.interfaces;
+
+  opens enemy.interfaces to
+      javafx.fxml;
+
+  exports player.interfaces;
+
+  opens player.interfaces to
+      javafx.fxml;
 }

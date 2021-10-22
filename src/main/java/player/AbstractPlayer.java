@@ -1,10 +1,12 @@
 package player;
 
 import enemy.Goomba;
-import enemy.IEnemies;
 import enemy.Spiny;
+import enemy.interfaces.IAttackableByPlayer;
+import enemy.interfaces.IEnemies;
 import item.IItems;
 import java.util.Random;
+import player.interfaces.IPlayers;
 
 /** Class that represents a player */
 public abstract class AbstractPlayer implements IPlayers {
@@ -206,7 +208,7 @@ public abstract class AbstractPlayer implements IPlayers {
   }
 
   @Override
-  public void jumpAttackEnemy(IEnemies anEnemy) {
+  public void jumpAttackEnemy(IAttackableByPlayer anEnemy) {
     int newFp = this.getFp() - 1;
     if (newFp >= 0) {
       anEnemy.jumpAttackedByPlayer(this);
@@ -215,7 +217,7 @@ public abstract class AbstractPlayer implements IPlayers {
   }
 
   @Override
-  public void hammerAttackEnemy(IEnemies anEnemy) {
+  public void hammerAttackEnemy(IAttackableByPlayer anEnemy) {
     int newFp = this.getFp() - 2;
     if (newFp >= 0 && rand.nextInt(4) == 0) {
       anEnemy.hammerAttackedByPlayer(this);

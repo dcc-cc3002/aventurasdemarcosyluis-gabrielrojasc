@@ -6,7 +6,6 @@ import item.RedMushroom;
 import item.Star;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import player.IPlayers;
 import player.Marco;
 
 public class TestItem {
@@ -14,7 +13,7 @@ public class TestItem {
   private Star testStar;
   private RedMushroom testRedMushroom;
   private HoneySyrup testHoneySyrup;
-  private IPlayers player;
+  private Marco player;
 
   @BeforeEach
   public void setUp() {

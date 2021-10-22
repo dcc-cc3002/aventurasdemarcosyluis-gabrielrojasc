@@ -1,6 +1,6 @@
 package item;
 
-import player.IPlayers;
+import player.interfaces.IPlayers;
 
 /** Class that represents the item Star */
 public class Star extends AbstractItem {

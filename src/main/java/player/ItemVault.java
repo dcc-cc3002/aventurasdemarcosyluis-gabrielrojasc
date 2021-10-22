@@ -16,7 +16,7 @@ public class ItemVault {
     itemList.add(item);
   }
 
-  public void useItem(IItems item, IPlayers player) {
+  public void useItem(IItems item, AbstractPlayer player) {
     if (itemList.contains(item)) {
       item.applyTo(player);
       itemList.remove(item);

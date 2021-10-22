@@ -1,4 +1,4 @@
-package player;
+package player.interfaces;
 
 import enemy.Boo;
 

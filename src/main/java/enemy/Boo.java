@@ -1,10 +1,12 @@
 package enemy;
 
-import player.IAttackableByBoo;
-import player.IPlayers;
+import enemy.interfaces.IAttackableByBooAttacker;
+import enemy.interfaces.IAttackableByLuis;
+import player.Luis;
+import player.interfaces.IAttackableByBoo;
 
 /** Class that represents the character Boo */
-public class Boo extends AbstractEnemy implements IAttackableByBooAttacker {
+public class Boo extends AbstractEnemy implements IAttackableByLuis, IAttackableByBooAttacker {
 
   /**
    * Create a Boo
@@ -19,10 +21,16 @@ public class Boo extends AbstractEnemy implements IAttackableByBooAttacker {
     super(LVL, ATK, DEF, HP, MaxHP);
   }
 
+  @Override
   public void attackPlayer(IAttackableByBoo aPlayer) {
     aPlayer.attackedByBoo(this);
   }
 
   @Override
-  public void hammerAttackedByPlayer(IPlayers aPlayer) {}
+  public void jumpAttackedByLuis(Luis aLuis) {
+    this.receiveDmg(aLuis.getJumpDmg(this));
+  }
+
+  @Override
+  public void hammerAttackedByLuis(Luis aLuis) {}
 }

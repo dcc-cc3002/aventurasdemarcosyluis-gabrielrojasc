@@ -5,8 +5,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import enemy.Boo;
 import enemy.Goomba;
-import enemy.IEnemies;
 import enemy.Spiny;
+import enemy.interfaces.IEnemies;
 import item.HoneySyrup;
 import item.IItems;
 import item.RedMushroom;
@@ -14,10 +14,10 @@ import item.Star;
 import java.util.ArrayList;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import player.IPlayers;
 import player.ItemVault;
 import player.Luis;
 import player.Marco;
+import player.interfaces.IPlayers;
 
 public class TestPlayer {
   private Marco testMarco;
@@ -201,7 +201,7 @@ public class TestPlayer {
   }
 
   @Test
-  public void isAliveTest() {
+  public void isKOTest() {
     assertFalse(testMarco.isKO());
     assertFalse(testLuis.isKO());
     testMarco.setHp(0);
@@ -256,7 +256,7 @@ public class TestPlayer {
 
   @Test
   public void setRandSeedTest() {
-    IEnemies testGoomba1 = new Goomba(10, 50, 50, 100, 100);
+    Goomba testGoomba1 = new Goomba(10, 50, 50, 100, 100);
     testMarco.setRandSeed(2);
 
     testMarco.hammerAttackEnemy(testGoomba1);
@@ -271,12 +271,11 @@ public class TestPlayer {
 
   @Test
   public void receiveDmgTest() {
-    int beforeHp = testMarco.getHp();
     int dmg = 10;
-    int afterHp = beforeHp - dmg;
+    int expectedMarcoHp = testMarco.getHp() - dmg;
     testMarco.receiveDmg(dmg);
 
-    assertEquals(afterHp, testMarco.getHp());
+    assertEquals(expectedMarcoHp, testMarco.getHp());
   }
 
   @Test
@@ -302,9 +301,9 @@ public class TestPlayer {
 
   @Test
   public void jumpAttackEnemyTest() {
-    IEnemies testGoomba1 = new Goomba(1, 5, 5, 10, 10);
-    IEnemies testGoomba2 = new Goomba(10, 50, 50, 100, 100);
-    IEnemies testSpiny = new Spiny(10, 50, 50, 100, 100);
+    Goomba testGoomba1 = new Goomba(1, 5, 5, 10, 10);
+    Goomba testGoomba2 = new Goomba(10, 50, 50, 100, 100);
+    Spiny testSpiny = new Spiny(10, 50, 50, 100, 100);
 
     int expectedGoomba1Hp = Math.max(0, testGoomba1.getHp() - testMarco.getJumpDmg(testGoomba1));
     int expectedGoomba2Hp = Math.max(0, testGoomba2.getHp() - testMarco.getJumpDmg(testGoomba2));
@@ -323,24 +322,20 @@ public class TestPlayer {
 
   @Test
   public void hammerAttackEnemyTest() {
-    IEnemies testGoomba1 = new Goomba(1, 5, 5, 10, 10);
-    IEnemies testGoomba2 = new Goomba(10, 50, 50, 100, 100);
-    IEnemies testBoo = new Boo(10, 50, 50, 100, 100);
+    Goomba testGoomba1 = new Goomba(1, 5, 5, 10, 10);
+    Goomba testGoomba2 = new Goomba(10, 50, 50, 100, 100);
 
     testMarco.setRandSeed(1);
 
     int expectedGoomba1Hp = testGoomba1.getHp(); // not hit
     int expectedGoomba2Hp =
         Math.max(0, testGoomba2.getHp() - testMarco.getHammerDmg(testGoomba2)); // hit
-    int expectedBooHp = testBoo.getHp();
 
     testMarco.hammerAttackEnemy(testGoomba1);
     testMarco.hammerAttackEnemy(testGoomba2);
-    testMarco.hammerAttackEnemy(testBoo);
 
     assertEquals(expectedGoomba1Hp, testGoomba1.getHp());
     assertEquals(expectedGoomba2Hp, testGoomba2.getHp());
-    assertEquals(expectedBooHp, testBoo.getHp());
   }
 
   @Test

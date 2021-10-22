@@ -1,6 +1,6 @@
-package enemy;
+package enemy.interfaces;
 
-import player.IAttackableByBoo;
+import player.interfaces.IAttackableByBoo;
 
 public interface IAttackableByBooAttacker {
   void attackPlayer(IAttackableByBoo aPlayer);

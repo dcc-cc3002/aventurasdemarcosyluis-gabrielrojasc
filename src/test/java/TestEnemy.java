@@ -5,16 +5,18 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import enemy.Boo;
 import enemy.Goomba;
-import enemy.IEnemies;
 import enemy.Spiny;
+import enemy.interfaces.IEnemies;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import player.Luis;
+import player.Marco;
 
 public class TestEnemy {
 
-  private IEnemies testGoomba;
-  private IEnemies testSpiny;
-  private IEnemies testBoo;
+  private Goomba testGoomba;
+  private Spiny testSpiny;
+  private Boo testBoo;
 
   @BeforeEach
   public void setUp() {
@@ -148,7 +150,7 @@ public class TestEnemy {
   }
 
   @Test
-  public void isAliveTest() {
+  public void isKOTest() {
     assertFalse(testGoomba.isKO());
     assertFalse(testSpiny.isKO());
     assertFalse(testBoo.isKO());
@@ -159,4 +161,43 @@ public class TestEnemy {
     assertTrue(testSpiny.isKO());
     assertTrue(testBoo.isKO());
   }
+
+  @Test
+  public void receiveDmgTest() {
+    int dmg = 20;
+    int expectedGoombaHp = testGoomba.getHp() - dmg;
+
+    testGoomba.receiveDmg(dmg);
+
+    assertEquals(expectedGoombaHp, testGoomba.getHp());
+  }
+
+  @Test
+  public void getDmgTest() {
+    Luis testLuis = new Luis(10, 20, 20, 50, 30, 50, 30);
+    int expectedGoombaDmg =
+        Math.round(
+            (float) 0.75
+                * testGoomba.getAtk()
+                * ((float) testGoomba.getLvl() / (float) testLuis.getDef()));
+
+    assertEquals(expectedGoombaDmg, testGoomba.getDmg(testLuis));
+  }
+
+  @Test
+  public void jumpAttackedByPlayerTest() {
+    Marco testMarco = new Marco(10, 20, 20, 50, 30, 50, 30);
+
+    int expectedGoombaHp = testGoomba.getHp() - testMarco.getJumpDmg(testGoomba);
+    int expectedSpinyHp = testSpiny.getHp();
+
+    testGoomba.jumpAttackedByPlayer(testMarco);
+    testSpiny.jumpAttackedByPlayer(testMarco);
+
+    assertEquals(expectedGoombaHp, testGoomba.getHp());
+    assertEquals(expectedSpinyHp, testSpiny.getHp());
+  }
+
+  @Test
+  public void hammerAttackedByPlayerTest() {}
 }

@@ -1,10 +1,11 @@
-package player;
+package player.interfaces;
 
 import enemy.Goomba;
-import enemy.IEnemies;
 import enemy.Spiny;
+import enemy.interfaces.IAttackableByPlayer;
+import enemy.interfaces.IEnemies;
 import item.IItems;
-import java.util.Random;
+import player.ItemVault;
 
 /** Interfaces that represents the players */
 public interface IPlayers {
@@ -83,9 +84,9 @@ public interface IPlayers {
 
   int getHammerDmg(IEnemies anEnemy);
 
-  void jumpAttackEnemy(IEnemies anEnemy);
+  void jumpAttackEnemy(IAttackableByPlayer anEnemy);
 
-  void hammerAttackEnemy(IEnemies anEnemy);
+  void hammerAttackEnemy(IAttackableByPlayer anEnemy);
 
   void attackedByGoomba(Goomba aGoomba);
 
