@@ -1,7 +1,9 @@
 package player;
 
+import enemy.Boo;
+
 /** Class that represents the character Luis */
-public class Luis extends AbstractPlayer {
+public class Luis extends AbstractPlayer implements IAttackableByBoo {
 
   /**
    * Create a Luis
@@ -16,5 +18,11 @@ public class Luis extends AbstractPlayer {
    */
   public Luis(int LVL, int ATK, int DEF, int HP, int FP, int MaxHP, int MaxFP) {
     super(LVL, ATK, DEF, HP, FP, MaxHP, MaxFP);
+  }
+
+  @Override
+  public void attackedByBoo(Boo aBoo) {
+    int newHp = this.getHp() - aBoo.getDmg(this);
+    this.setHp(Math.max(0, newHp));
   }
 }

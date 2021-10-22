@@ -1,7 +1,10 @@
 package player;
 
+import enemy.Goomba;
 import enemy.IEnemies;
+import enemy.Spiny;
 import item.IItems;
+import java.util.Random;
 
 /** Class that represents a player */
 public abstract class AbstractPlayer implements IPlayers {
@@ -13,6 +16,7 @@ public abstract class AbstractPlayer implements IPlayers {
   protected int fp;
   protected int maxHp;
   protected int maxFp;
+  protected Random rand = new Random();
 
   /**
    * Create a player
@@ -173,6 +177,53 @@ public abstract class AbstractPlayer implements IPlayers {
    */
   @Override
   public void useItem(IItems item, ItemVault vault) {
-    vault.useItem(item, this);
+    if (!this.isKO()) {
+      vault.useItem(item, this);
+    }
+  }
+
+  @Override
+  public void receiveDmg(int dmg) {
+    this.setHp(Math.max(0, dmg));
+  }
+
+  @Override
+  public int getJumpDmg(IEnemies anEnemy) {
+    float dmg = this.getAtk() * ((float) this.getLvl() / (float) anEnemy.getLvl());
+    return Math.round(dmg);
+  }
+
+  @Override
+  public int getHammerDmg(IEnemies anEnemy) {
+    float dmg = (float) 1.5 - this.getAtk() * ((float) this.getLvl() / (float) anEnemy.getLvl());
+    return Math.round(dmg);
+  }
+
+  @Override
+  public void jumpAttackEnemy(IEnemies anEnemy) {
+    int newFp = this.getFp() - 1;
+    if (newFp >= 0) {
+      anEnemy.jumpAttackedByPlayer(this);
+      this.setFp(newFp);
+    }
+  }
+
+  @Override
+  public void hammerAttackEnemy(IEnemies anEnemy) {
+    int newFp = this.getFp() - 2;
+    if (newFp >= 0 && rand.nextInt(4) == 0) {
+      anEnemy.hammerAttackedByPlayer(this);
+      this.setFp(newFp);
+    }
+  }
+
+  @Override
+  public void attackedByGoomba(Goomba aGoomba) {
+    this.receiveDmg(aGoomba.getDmg(this));
+  }
+
+  @Override
+  public void attackedBySpiny(Spiny aSpiny) {
+    this.receiveDmg(aSpiny.getDmg(this));
   }
 }

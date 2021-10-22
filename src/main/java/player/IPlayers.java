@@ -1,6 +1,5 @@
 package player;
 
-import enemy.Boo;
 import enemy.Goomba;
 import enemy.IEnemies;
 import enemy.Spiny;
@@ -74,4 +73,18 @@ public interface IPlayers {
    * @param item the item to be used
    */
   void useItem(IItems item, ItemVault vault);
+
+  void receiveDmg(int dmg);
+
+  int getJumpDmg(IEnemies anEnemy);
+
+  int getHammerDmg(IEnemies anEnemy);
+
+  void jumpAttackEnemy(IEnemies anEnemy);
+
+  void hammerAttackEnemy(IEnemies anEnemy);
+
+  void attackedByGoomba(Goomba aGoomba);
+
+  void attackedBySpiny(Spiny aSpiny);
 }

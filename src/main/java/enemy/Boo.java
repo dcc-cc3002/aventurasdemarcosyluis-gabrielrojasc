@@ -1,7 +1,10 @@
 package enemy;
 
+import player.IAttackableByBoo;
+import player.IPlayers;
+
 /** Class that represents the character Boo */
-public class Boo extends AbstractEnemy {
+public class Boo extends AbstractEnemy implements IAttackableByBooAttacker {
 
   /**
    * Create a Boo
@@ -15,4 +18,11 @@ public class Boo extends AbstractEnemy {
   public Boo(int LVL, int ATK, int DEF, int HP, int MaxHP) {
     super(LVL, ATK, DEF, HP, MaxHP);
   }
+
+  public void attackPlayer(IAttackableByBoo aPlayer) {
+    aPlayer.attackedByBoo(this);
+  }
+
+  @Override
+  public void hammerAttackedByPlayer(IPlayers aPlayer) {}
 }

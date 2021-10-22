@@ -1,7 +1,9 @@
 package enemy;
 
+import player.IPlayers;
+
 /** Class that represents the character Goomba */
-public class Goomba extends AbstractEnemy {
+public class Goomba extends AbstractEnemy implements IPlayerAttacker {
 
   /**
    * Create a Goomba
@@ -14,5 +16,9 @@ public class Goomba extends AbstractEnemy {
    */
   public Goomba(int LVL, int ATK, int DEF, int HP, int MaxHP) {
     super(LVL, ATK, DEF, HP, MaxHP);
+  }
+
+  public void attackPlayer(IPlayers aPlayer) {
+    aPlayer.attackedByGoomba(this);
   }
 }

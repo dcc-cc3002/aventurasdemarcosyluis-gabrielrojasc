@@ -1,5 +1,7 @@
 package enemy;
 
+import player.IPlayers;
+
 /** Class that represents an enemy */
 public abstract class AbstractEnemy implements IEnemies {
 
@@ -115,5 +117,26 @@ public abstract class AbstractEnemy implements IEnemies {
   @Override
   public boolean isKO() {
     return hp == 0;
+  }
+
+  @Override
+  public void receiveDmg(int dmg) {
+    this.setHp(Math.max(0, dmg));
+  }
+
+  @Override
+  public int getDmg(IPlayers aPlayer) {
+    float dmg = (float) 0.75 * this.getAtk() * ((float) this.getLvl() / (float) aPlayer.getDef());
+    return Math.round(dmg);
+  }
+
+  @Override
+  public void jumpAttackedByPlayer(IPlayers aPlayer) {
+    this.receiveDmg(aPlayer.getJumpDmg(this));
+  }
+
+  @Override
+  public void hammerAttackedByPlayer(IPlayers aPlayer) {
+    this.receiveDmg(aPlayer.getHammerDmg(this));
   }
 }

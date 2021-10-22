@@ -1,5 +1,7 @@
 package enemy;
 
+import player.IPlayers;
+
 /** Interface that represetns the enemy */
 public interface IEnemies {
 
@@ -48,4 +50,12 @@ public interface IEnemies {
 
   /** Returns if the enemy is knocked out (hp=0) */
   boolean isKO();
+
+  void receiveDmg(int dmg);
+
+  int getDmg(IPlayers aPlayer);
+
+  void jumpAttackedByPlayer(IPlayers aPlayer);
+
+  void hammerAttackedByPlayer(IPlayers aPlayer);
 }
