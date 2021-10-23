@@ -1,10 +1,8 @@
-package enemy;
+package characters.character;
 
-import enemy.interfaces.IEnemies;
-import player.interfaces.IPlayers;
+import characters.character.interfaces.ICharacters;
 
-/** Class that represents an enemy */
-public abstract class AbstractEnemy implements IEnemies {
+public abstract class AbstractCharacter implements ICharacters {
 
   protected int lvl;
   protected int atk;
@@ -12,18 +10,7 @@ public abstract class AbstractEnemy implements IEnemies {
   protected int hp;
   protected int maxHp;
 
-  /**
-   * Create an enemy
-   *
-   * @param LVL the lvl of the enemy
-   * @param ATK the atk of the enemy
-   * @param DEF the def of the enemy
-   * @param HP the hp of the enemy
-   * @throws IllegalArgumentException if HP is less than 0 or greater than MaxHP
-   * @param MaxHP the maxHp of the enemy
-   * @throws IllegalArgumentException if MaxHp is less than 0
-   */
-  public AbstractEnemy(int LVL, int ATK, int DEF, int HP, int MaxHP) {
+  public AbstractCharacter(int LVL, int ATK, int DEF, int HP, int MaxHP) {
     if (MaxHP < 0) {
       throw new IllegalArgumentException(
           MaxHP + " is not a valid maxHp. maxHp must be greater than 0.");
@@ -58,6 +45,9 @@ public abstract class AbstractEnemy implements IEnemies {
   /** Returns the atk */
   @Override
   public int getAtk() {
+    if (this.isKO()) {
+      return 0;
+    }
     return atk;
   }
 
@@ -101,7 +91,7 @@ public abstract class AbstractEnemy implements IEnemies {
    */
   @Override
   public void setHp(int hp) {
-    if (hp < 0 || hp > maxHp) {
+    if (hp > maxHp || hp < 0) {
       throw new IllegalArgumentException(
           hp + " is not a valid hp. hp must be between 0 and " + maxHp);
     }
@@ -118,17 +108,5 @@ public abstract class AbstractEnemy implements IEnemies {
   @Override
   public boolean isKO() {
     return hp == 0;
-  }
-
-  @Override
-  public void receiveDmg(int dmg) {
-    int newHp = this.getHp() - dmg;
-    this.setHp(Math.max(0, newHp));
-  }
-
-  @Override
-  public int getDmg(IPlayers aPlayer) {
-    float dmg = (float) 0.75 * this.getAtk() * ((float) this.getLvl() / (float) aPlayer.getDef());
-    return Math.round(dmg);
   }
 }

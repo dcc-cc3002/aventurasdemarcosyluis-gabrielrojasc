@@ -1,9 +1,9 @@
-package enemy;
+package characters.enemy;
 
-import enemy.interfaces.IAttackableByPlayer;
-import enemy.interfaces.IAttackableBySpinyAttacker;
-import player.interfaces.IAttackableBySpiny;
-import player.interfaces.IPlayers;
+import characters.enemy.interfaces.attackable.IAttackableByPlayer;
+import characters.enemy.interfaces.attacker.IAttackableBySpinyAttacker;
+import characters.player.interfaces.IPlayers;
+import characters.player.interfaces.attackable.IAttackableBySpiny;
 
 /** Class that represents the character Spiny */
 public class Spiny extends AbstractEnemy
@@ -29,8 +29,8 @@ public class Spiny extends AbstractEnemy
 
   @Override
   public void jumpAttackedByPlayer(IPlayers aPlayer) {
-    int newHp = Math.round(aPlayer.getHp() * (float) 0.95);
-    aPlayer.setHp(Math.max(0, newHp));
+    int dmg = Math.round((float) 0.05 * aPlayer.getHp());
+    aPlayer.receiveDmg(dmg);
   }
 
   @Override

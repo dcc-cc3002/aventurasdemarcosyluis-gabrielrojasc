@@ -1,6 +1,6 @@
 package item;
 
-import player.interfaces.IPlayers;
+import characters.player.interfaces.IPlayers;
 
 /** Interface that represents the item */
 public interface IItems {

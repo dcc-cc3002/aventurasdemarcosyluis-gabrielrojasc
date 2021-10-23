@@ -1,6 +1,6 @@
-package enemy.interfaces;
+package characters.enemy.interfaces.attackable;
 
-import player.interfaces.IPlayers;
+import characters.player.interfaces.IPlayers;
 
 public interface IAttackableByPlayer {
   void jumpAttackedByPlayer(IPlayers aPlayer);

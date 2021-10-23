@@ -1,6 +1,6 @@
-package player.interfaces;
+package characters.player.interfaces.attackable;
 
-import enemy.Spiny;
+import characters.enemy.Spiny;
 
 public interface IAttackableBySpiny {
   void attackedBySpiny(Spiny aSpiny);

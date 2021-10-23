@@ -1,6 +1,6 @@
-package player.interfaces;
+package characters.player.interfaces.attackable;
 
-import enemy.Goomba;
+import characters.enemy.Goomba;
 
 public interface IAttackableByGoomba {
   void attackedByGoomba(Goomba aGoomba);

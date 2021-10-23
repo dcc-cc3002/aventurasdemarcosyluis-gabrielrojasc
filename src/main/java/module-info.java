@@ -2,9 +2,9 @@ module com.example.aventurasdemarcoyluis {
   requires javafx.controls;
   requires javafx.fxml;
 
-  exports enemy;
+  exports characters.enemy;
 
-  opens enemy to
+  opens characters.enemy to
       javafx.fxml;
 
   exports item;
@@ -12,18 +12,38 @@ module com.example.aventurasdemarcoyluis {
   opens item to
       javafx.fxml;
 
-  exports player;
+  exports characters.player;
 
-  opens player to
+  opens characters.player to
       javafx.fxml;
 
-  exports enemy.interfaces;
+  exports characters.enemy.interfaces;
 
-  opens enemy.interfaces to
+  opens characters.enemy.interfaces to
       javafx.fxml;
 
-  exports player.interfaces;
+  exports characters.player.interfaces;
 
-  opens player.interfaces to
+  opens characters.player.interfaces to
+      javafx.fxml;
+
+  exports characters.enemy.interfaces.attacker;
+
+  opens characters.enemy.interfaces.attacker to
+      javafx.fxml;
+
+  exports characters.enemy.interfaces.attackable;
+
+  opens characters.enemy.interfaces.attackable to
+      javafx.fxml;
+
+  exports characters.player.interfaces.attackable;
+
+  opens characters.player.interfaces.attackable to
+      javafx.fxml;
+
+  exports characters.player.interfaces.attacker;
+
+  opens characters.player.interfaces.attacker to
       javafx.fxml;
 }

@@ -1,6 +1,6 @@
 package item;
 
-import player.interfaces.IPlayers;
+import characters.player.interfaces.IPlayers;
 
 /** Class that represents the item Honey Syrup */
 public class HoneySyrup extends AbstractItem {

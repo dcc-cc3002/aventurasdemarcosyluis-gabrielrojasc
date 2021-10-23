@@ -3,20 +3,20 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import enemy.Boo;
-import enemy.Goomba;
-import enemy.Spiny;
-import enemy.interfaces.IEnemies;
+import characters.enemy.Boo;
+import characters.enemy.Goomba;
+import characters.enemy.Spiny;
+import characters.enemy.interfaces.IEnemies;
+import characters.player.ItemVault;
+import characters.player.Luis;
+import characters.player.Marco;
+import characters.player.interfaces.IPlayers;
 import item.HoneySyrup;
 import item.IItems;
 import item.RedMushroom;
 import java.util.ArrayList;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import player.ItemVault;
-import player.Luis;
-import player.Marco;
-import player.interfaces.IPlayers;
 
 public class TestPlayer {
   private Marco testMarco;
@@ -307,7 +307,7 @@ public class TestPlayer {
     int expectedGoomba1Hp = Math.max(0, testGoomba1.getHp() - testMarco.getJumpDmg(testGoomba1));
     int expectedGoomba2Hp = Math.max(0, testGoomba2.getHp() - testMarco.getJumpDmg(testGoomba2));
     int expectedSpinyHp = testSpiny.getHp();
-    int expectedMarcoHp = Math.round(testMarco.getHp() * (float) 0.95);
+    int expectedMarcoHp = testMarco.getHp() - Math.round(testMarco.getHp() * (float) 0.05);
 
     testMarco.jumpAttackEnemy(testGoomba1);
     testMarco.jumpAttackEnemy(testGoomba2);

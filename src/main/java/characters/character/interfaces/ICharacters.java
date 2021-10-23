@@ -1,9 +1,6 @@
-package enemy.interfaces;
+package characters.character.interfaces;
 
-import player.interfaces.IPlayers;
-
-/** Interface that represetns the enemy */
-public interface IEnemies {
+public interface ICharacters {
 
   /** Returns the lvl */
   int getLvl();
@@ -52,6 +49,4 @@ public interface IEnemies {
   boolean isKO();
 
   void receiveDmg(int dmg);
-
-  int getDmg(IPlayers aPlayer);
 }

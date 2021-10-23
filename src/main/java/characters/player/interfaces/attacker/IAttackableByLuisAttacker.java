@@ -1,6 +1,6 @@
-package player.interfaces;
+package characters.player.interfaces.attacker;
 
-import enemy.interfaces.IAttackableByLuis;
+import characters.enemy.interfaces.attackable.IAttackableByLuis;
 
 public interface IAttackableByLuisAttacker {
   void jumpAttackEnemy(IAttackableByLuis anEnemy);

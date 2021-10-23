@@ -1,9 +1,9 @@
-package enemy;
+package characters.enemy;
 
-import enemy.interfaces.IAttackableByGoombaAttacker;
-import enemy.interfaces.IAttackableByPlayer;
-import player.interfaces.IAttackableByGoomba;
-import player.interfaces.IPlayers;
+import characters.enemy.interfaces.attackable.IAttackableByPlayer;
+import characters.enemy.interfaces.attacker.IAttackableByGoombaAttacker;
+import characters.player.interfaces.IPlayers;
+import characters.player.interfaces.attackable.IAttackableByGoomba;
 
 /** Class that represents the character Goomba */
 public class Goomba extends AbstractEnemy

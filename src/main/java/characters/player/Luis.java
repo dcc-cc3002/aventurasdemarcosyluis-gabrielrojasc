@@ -1,11 +1,9 @@
-package player;
+package characters.player;
 
-import enemy.Boo;
-import enemy.interfaces.IAttackableByLuis;
-import player.interfaces.IAttackableByBoo;
-import player.interfaces.IAttackableByGoomba;
-import player.interfaces.IAttackableByLuisAttacker;
-import player.interfaces.IAttackableBySpiny;
+import characters.enemy.Boo;
+import characters.enemy.interfaces.attackable.IAttackableByLuis;
+import characters.player.interfaces.attackable.IAttackableByBoo;
+import characters.player.interfaces.attacker.IAttackableByLuisAttacker;
 
 /** Class that represents the character Luis */
 public class Luis extends AbstractPlayer implements IAttackableByBoo, IAttackableByLuisAttacker {

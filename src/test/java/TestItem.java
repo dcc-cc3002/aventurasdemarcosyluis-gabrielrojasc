@@ -1,11 +1,11 @@
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import characters.player.Marco;
 import item.HoneySyrup;
 import item.IItems;
 import item.RedMushroom;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import player.Marco;
 
 public class TestItem {
 

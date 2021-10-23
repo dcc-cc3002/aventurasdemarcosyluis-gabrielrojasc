@@ -1,9 +1,9 @@
-package enemy;
+package characters.enemy;
 
-import enemy.interfaces.IAttackableByBooAttacker;
-import enemy.interfaces.IAttackableByLuis;
-import player.Luis;
-import player.interfaces.IAttackableByBoo;
+import characters.enemy.interfaces.attackable.IAttackableByLuis;
+import characters.enemy.interfaces.attacker.IAttackableByBooAttacker;
+import characters.player.Luis;
+import characters.player.interfaces.attackable.IAttackableByBoo;
 
 /** Class that represents the character Boo */
 public class Boo extends AbstractEnemy implements IAttackableByLuis, IAttackableByBooAttacker {

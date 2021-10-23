@@ -1,7 +1,7 @@
 package item;
 
+import characters.player.interfaces.IPlayers;
 import java.util.Objects;
-import player.interfaces.IPlayers;
 
 /** Class that represents an item */
 public abstract class AbstractItem implements IItems {
