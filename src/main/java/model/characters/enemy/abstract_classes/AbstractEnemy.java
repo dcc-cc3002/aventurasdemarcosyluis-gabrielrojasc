@@ -56,5 +56,6 @@ public abstract class AbstractEnemy extends AbstractCharacter implements IEnemie
     this.receiveDmg(aPlayer.getHammerDmg(this));
   }
 
+  /** Returns if this is attackable by Luis */
   public abstract boolean attackableByLuis();
 }

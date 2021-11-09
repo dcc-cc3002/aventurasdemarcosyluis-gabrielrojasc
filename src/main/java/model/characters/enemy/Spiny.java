@@ -42,6 +42,7 @@ public class Spiny extends AbstractEnemy implements IAttackableByLuis {
     aPlayer.setHp(Math.max(0, newHp));
   }
 
+  /** Returns if this is attackable by Luis */
   @Override
   public boolean attackableByLuis() {
     return true;

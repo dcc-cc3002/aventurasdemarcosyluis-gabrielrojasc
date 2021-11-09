@@ -2,16 +2,16 @@ package model.item;
 
 import model.characters.player.interfaces.IPlayers;
 
-/** Interface that represents the model.item */
+/** Interface that represents the item */
 public interface IItems {
 
   /** Returns the name */
   String getName();
 
   /**
-   * Applies the model.item to a player
+   * Applies the item to a player
    *
-   * @param player the player to apply the model.item
+   * @param player the player to apply the item
    */
   void applyTo(IPlayers player);
 

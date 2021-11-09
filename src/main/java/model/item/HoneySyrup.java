@@ -2,7 +2,7 @@ package model.item;
 
 import model.characters.player.interfaces.IPlayers;
 
-/** Class that represents the model.item Honey Syrup */
+/** Class that represents the item Honey Syrup */
 public class HoneySyrup extends AbstractItem {
 
   /** Create a Honey Syrup */
@@ -11,9 +11,9 @@ public class HoneySyrup extends AbstractItem {
   }
 
   /**
-   * Applies the model.item to a player
+   * Applies the item to a player
    *
-   * @param player the player to apply the model.item
+   * @param player the player to apply the item
    */
   @Override
   public void applyTo(IPlayers player) {

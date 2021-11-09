@@ -2,7 +2,7 @@ package model.item;
 
 import model.characters.player.interfaces.IPlayers;
 
-/** Class that represetn the model.item Red Mushroom */
+/** Class that represents the item Red Mushroom */
 public class RedMushroom extends AbstractItem {
 
   /** Create a Red Mushroom */
@@ -11,9 +11,9 @@ public class RedMushroom extends AbstractItem {
   }
 
   /**
-   * Applies the model.item to a player
+   * Applies the item to a player
    *
-   * @param player the player to apply the model.item
+   * @param player the player to apply the item
    */
   @Override
   public void applyTo(IPlayers player) {

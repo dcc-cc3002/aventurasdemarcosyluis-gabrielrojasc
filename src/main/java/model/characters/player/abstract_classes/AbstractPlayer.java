@@ -83,9 +83,9 @@ public abstract class AbstractPlayer extends AbstractCharacter implements IPlaye
   }
 
   /**
-   * Uses an model.item if the model.item is on the itemList
+   * Uses an item if the item is on the itemList
    *
-   * @param item the model.item to be used
+   * @param item the item to be used
    */
   @Override
   public void useItem(IItems item, ItemVault vault) {
@@ -138,5 +138,6 @@ public abstract class AbstractPlayer extends AbstractCharacter implements IPlaye
     this.receiveDmg(anEnemy.getDmg(this));
   }
 
+  /** Returns if this is attackable by Boo */
   public abstract boolean attackableByBoo();
 }

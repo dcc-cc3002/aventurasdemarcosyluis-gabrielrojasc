@@ -27,5 +27,6 @@ public interface IEnemies extends ICharacters {
    */
   void hammerAttackedByPlayer(IPlayers aPlayer);
 
+  /** Returns if this is attackable by Luis */
   boolean attackableByLuis();
 }

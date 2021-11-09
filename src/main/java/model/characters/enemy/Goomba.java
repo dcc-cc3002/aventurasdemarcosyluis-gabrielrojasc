@@ -30,6 +30,7 @@ public class Goomba extends AbstractEnemy implements IAttackableByLuis {
     aPlayer.attackedByEnemy(this);
   }
 
+  /** Returns if this is attackable by Luis */
   @Override
   public boolean attackableByLuis() {
     return true;

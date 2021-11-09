@@ -39,6 +39,7 @@ public class Boo extends AbstractEnemy {
   @Override
   public void hammerAttackedByPlayer(IPlayers aPlayer) {}
 
+  /** Returns if this is attackable by Luis */
   @Override
   public boolean attackableByLuis() {
     return attackableByLuis;

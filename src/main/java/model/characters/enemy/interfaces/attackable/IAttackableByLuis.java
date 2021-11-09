@@ -5,7 +5,18 @@ import model.characters.player.interfaces.IPlayers;
 
 /** Interface that represents an enemy attackable by Luis */
 public interface IAttackableByLuis extends IEnemies {
-  public void jumpAttackedByPlayer(IPlayers aPlayer);
 
-  public void hammerAttackedByPlayer(IPlayers aPlayer);
+  /**
+   * Receives the damage from a jump attack made by a player
+   *
+   * @param aPlayer the player attacking
+   */
+  void jumpAttackedByPlayer(IPlayers aPlayer);
+
+  /**
+   * Receives the damage from a hammer attack made by a player
+   *
+   * @param aPlayer the player attacking
+   */
+  void hammerAttackedByPlayer(IPlayers aPlayer);
 }

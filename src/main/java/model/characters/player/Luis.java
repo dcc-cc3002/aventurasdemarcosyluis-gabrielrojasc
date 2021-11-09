@@ -52,6 +52,7 @@ public class Luis extends AbstractPlayer implements IPlayers, IAttackableByBoo {
     }
   }
 
+  /** Returns if this is attackable by Boo */
   @Override
   public boolean attackableByBoo() {
     return attackableByBoo;

@@ -51,6 +51,7 @@ public class Marco extends AbstractPlayer implements IPlayers {
     }
   }
 
+  /** Returns if this is attackable by Boo */
   @Override
   public boolean attackableByBoo() {
     return attackableByBoo;

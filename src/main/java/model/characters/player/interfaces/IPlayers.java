@@ -22,9 +22,9 @@ public interface IPlayers extends ICharacters {
   int getMaxFp();
 
   /**
-   * Uses an model.item if the model.item is on the itemList
+   * Uses an item if the item is on the itemList
    *
-   * @param item the model.item to be used
+   * @param item the item to be used
    */
   void useItem(IItems item, ItemVault vault);
 
@@ -58,5 +58,6 @@ public interface IPlayers extends ICharacters {
    */
   void attackedByEnemy(IEnemies anEnemy);
 
+  /** Returns if this is attackable by Boo */
   boolean attackableByBoo();
 }

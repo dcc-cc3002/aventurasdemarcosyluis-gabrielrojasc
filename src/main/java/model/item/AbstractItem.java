@@ -3,15 +3,15 @@ package model.item;
 import java.util.Objects;
 import model.characters.player.interfaces.IPlayers;
 
-/** Class that represents an model.item */
+/** Class that represents an item */
 public abstract class AbstractItem implements IItems {
 
   protected String name;
 
   /**
-   * Create an model.item
+   * Create an item
    *
-   * @param NAME the name of the model.item
+   * @param NAME the name of the item
    */
   public AbstractItem(String NAME) {
     this.name = NAME;
@@ -24,9 +24,9 @@ public abstract class AbstractItem implements IItems {
   }
 
   /**
-   * Applies the model.item to a player
+   * Applies the item to a player
    *
-   * @param player the player to apply the model.item
+   * @param player the player to apply the item
    */
   @Override
   public abstract void applyTo(IPlayers player);

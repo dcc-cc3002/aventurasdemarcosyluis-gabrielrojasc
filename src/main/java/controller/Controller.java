@@ -200,22 +200,47 @@ public class Controller {
     currentTurn %= characterList.size();
   }
 
+  /**
+   * Jump attacks an enemy
+   *
+   * @param aMarco the attacker
+   * @param anEnemy the attacked
+   */
   public void jumpAttackEnemy(Marco aMarco, IEnemies anEnemy) {
     aMarco.jumpAttack(anEnemy);
   }
 
+  /**
+   * Jump attacks an enemy (attackable by Luis)
+   *
+   * @param aLuis the attacker
+   * @param anEnemy the attacked
+   */
   public void jumpAttackEnemy(Luis aLuis, IAttackableByLuis anEnemy) {
     aLuis.jumpAttack(anEnemy);
   }
 
+  /**
+   * Hammer attacks an enemy
+   *
+   * @param aMarco the attacker
+   * @param anEnemy the attacked
+   */
   public void hammerAttackEnemy(Marco aMarco, IEnemies anEnemy) {
     aMarco.hammerAttack(anEnemy);
   }
 
+  /**
+   * Hammer attacks an enemy (attackable by Luis)
+   *
+   * @param aLuis the attacker
+   * @param anEnemy the attacked
+   */
   public void hammerAttackEnemy(Luis aLuis, IAttackableByLuis anEnemy) {
     aLuis.hammerAttack(anEnemy);
   }
 
+  /** Returns an array of the attackable players */
   public ArrayList<IPlayers> getAttackablePlayers() {
     ArrayList<IPlayers> attackable = new ArrayList<>();
     for (IPlayers player : playerList) {
@@ -224,6 +249,7 @@ public class Controller {
     return attackable;
   }
 
+  /** Returns an array of the attackable players by boo */
   public ArrayList<IAttackableByBoo> getAttackableByBoo() {
     ArrayList<IAttackableByBoo> attackable = new ArrayList<>();
     for (IPlayers player : playerList) {
@@ -232,6 +258,7 @@ public class Controller {
     return attackable;
   }
 
+  /** Returns an array of the attackable enemies */
   public ArrayList<IEnemies> getAttackableEnemies() {
     ArrayList<IEnemies> attackable = new ArrayList<>();
     for (IEnemies enemy : enemyList) {
@@ -240,6 +267,7 @@ public class Controller {
     return attackable;
   }
 
+  /** Returns an array of the attable enemies by Luis */
   public ArrayList<IAttackableByLuis> getAttackableByLuis() {
     ArrayList<IAttackableByLuis> attackable = new ArrayList<>();
     for (IEnemies enemy : enemyList) {
@@ -248,30 +276,47 @@ public class Controller {
     return attackable;
   }
 
+  /** Returns a target for Marco to attack in automated test */
   public IEnemies getTargetMarco() {
     ArrayList<IEnemies> attackable = getAttackableEnemies();
     int chosen = rand.nextInt(0, attackable.size());
     return attackable.get(chosen);
   }
 
+  /** Returns a target for Luis to attack in automated test */
   public IAttackableByLuis getTargetLuis() {
     ArrayList<IAttackableByLuis> attackable = getAttackableByLuis();
     int chosen = rand.nextInt(0, attackable.size());
     return attackable.get(chosen);
   }
 
+  /**
+   * Attacks a random player
+   *
+   * @param aGoomba the attacker
+   */
   public void attackRandomPlayer(Goomba aGoomba) {
     ArrayList<IPlayers> attackable = getAttackablePlayers();
     int chosen = rand.nextInt(0, attackable.size());
     aGoomba.attackPlayer(attackable.get(chosen));
   }
 
+  /**
+   * Attacks a random player
+   *
+   * @param aSpiny the attacker
+   */
   public void attackRandomPlayer(Spiny aSpiny) {
     ArrayList<IPlayers> attackable = getAttackablePlayers();
     int chosen = rand.nextInt(0, attackable.size());
     aSpiny.attackPlayer(attackable.get(chosen));
   }
 
+  /**
+   * Attacks a random player (attackable by boo)
+   *
+   * @param aBoo the attacker
+   */
   public void attackRandomPlayer(Boo aBoo) {
     ArrayList<IAttackableByBoo> attackable = getAttackableByBoo();
     int chosen = rand.nextInt(0, attackable.size());
