@@ -2,48 +2,52 @@ module com.example.aventurasdemarcoyluis {
   requires javafx.controls;
   requires javafx.fxml;
 
-  exports characters.enemy;
+  exports model.characters.enemy;
 
-  opens characters.enemy to
+  opens model.characters.enemy to
       javafx.fxml;
 
-  exports item;
+  exports model.item;
 
-  opens item to
+  opens model.item to
       javafx.fxml;
 
-  exports characters.player;
+  exports model.characters.player;
 
-  opens characters.player to
+  opens model.characters.player to
       javafx.fxml;
 
-  exports characters.enemy.interfaces;
+  exports model.characters.enemy.interfaces;
 
-  opens characters.enemy.interfaces to
+  opens model.characters.enemy.interfaces to
       javafx.fxml;
 
-  exports characters.player.interfaces;
+  exports model.characters.player.interfaces;
 
-  opens characters.player.interfaces to
+  opens model.characters.player.interfaces to
+      javafx.fxml;
+  opens model.characters.enemy.interfaces.attacker to
       javafx.fxml;
 
-  exports characters.enemy.interfaces.attacker;
+  exports model.characters.enemy.interfaces.attackable;
 
-  opens characters.enemy.interfaces.attacker to
+  opens model.characters.enemy.interfaces.attackable to
       javafx.fxml;
 
-  exports characters.enemy.interfaces.attackable;
+  exports model.characters.player.interfaces.attackable;
 
-  opens characters.enemy.interfaces.attackable to
+  opens model.characters.player.interfaces.attackable to
+      javafx.fxml;
+  opens model.characters.player.interfaces.attacker to
       javafx.fxml;
 
-  exports characters.player.interfaces.attackable;
+  exports model.characters.enemy.abstract_classes;
 
-  opens characters.player.interfaces.attackable to
+  opens model.characters.enemy.abstract_classes to
       javafx.fxml;
 
-  exports characters.player.interfaces.attacker;
+  exports model.characters.player.abstract_classes;
 
-  opens characters.player.interfaces.attacker to
+  opens model.characters.player.abstract_classes to
       javafx.fxml;
 }
