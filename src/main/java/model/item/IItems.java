@@ -1,4 +1,6 @@
-package com.example.aventurasdemarcoyluis;
+package model.item;
+
+import model.characters.player.interfaces.IPlayers;
 
 /** Interface that represents the item */
 public interface IItems {

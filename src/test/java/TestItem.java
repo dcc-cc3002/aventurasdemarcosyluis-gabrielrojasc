@@ -1,34 +1,23 @@
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import com.example.aventurasdemarcoyluis.HoneySyrup;
-import com.example.aventurasdemarcoyluis.IItems;
-import com.example.aventurasdemarcoyluis.IPlayers;
-import com.example.aventurasdemarcoyluis.Marco;
-import com.example.aventurasdemarcoyluis.RedMushroom;
-import com.example.aventurasdemarcoyluis.Star;
+import model.characters.player.Marco;
+import model.item.HoneySyrup;
+import model.item.IItems;
+import model.item.RedMushroom;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class TestItem {
 
-  private Star testStar;
   private RedMushroom testRedMushroom;
   private HoneySyrup testHoneySyrup;
-  private IPlayers player;
+  private Marco player;
 
   @BeforeEach
   public void setUp() {
-    testStar = new Star();
     testRedMushroom = new RedMushroom();
     testHoneySyrup = new HoneySyrup();
     player = new Marco(10, 5, 2, 5, 10, 10, 10);
-  }
-
-  @Test
-  public void starTest() {
-    int initialHp = player.getHp();
-    testStar.applyTo(player);
-    assertEquals(initialHp, player.getHp());
   }
 
   @Test
@@ -57,7 +46,6 @@ public class TestItem {
 
   @Test
   public void nameGetterTest() {
-    assertEquals("Star", testStar.getName());
     assertEquals("RedMushroom", testRedMushroom.getName());
     assertEquals("HoneySyrup", testHoneySyrup.getName());
   }

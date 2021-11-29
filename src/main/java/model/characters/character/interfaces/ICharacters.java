@@ -1,9 +1,7 @@
-package com.example.aventurasdemarcoyluis;
+package model.characters.character.interfaces;
 
-import java.util.ArrayList;
-
-/** Interfaces that represents the players */
-public interface IPlayers {
+/** Interface that represents the character */
+public interface ICharacters {
 
   /** Returns the lvl */
   int getLvl();
@@ -45,39 +43,22 @@ public interface IPlayers {
    */
   void setHp(int hp);
 
-  /** Returns the fp */
-  int getFp();
-
-  /**
-   * Sets the fp
-   *
-   * @param fp the fp to set
-   */
-  void setFp(int fp);
-
   /** Returns the maxHp */
   int getMaxHp();
-
-  /** Returns the maxFp */
-  int getMaxFp();
-
-  /** Returns the items that the player has */
-  ArrayList getItems();
 
   /** Returns if the enemy is knocked out (hp=0) */
   boolean isKO();
 
   /**
-   * Adds an item to the itemList
+   * Set the hp to (currentHp - dmg)
    *
-   * @param item the item to add to the itemList
+   * @param dmg
    */
-  void addItem(IItems item);
+  void receiveDmg(int dmg);
 
   /**
-   * Uses an item if the item is on the itemList
-   *
-   * @param item the item to be used
+   * Levels up the Character, meaning it adds +1 to lvl, +15% of maxHp to hp, +15% to atk and +15%
+   * to def
    */
-  void useItem(IItems item);
+  void levelUp();
 }

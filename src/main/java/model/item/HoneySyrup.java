@@ -1,4 +1,6 @@
-package com.example.aventurasdemarcoyluis;
+package model.item;
+
+import model.characters.player.interfaces.IPlayers;
 
 /** Class that represents the item Honey Syrup */
 public class HoneySyrup extends AbstractItem {

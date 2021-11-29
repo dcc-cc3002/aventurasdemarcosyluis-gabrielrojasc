@@ -1,6 +1,8 @@
-package com.example.aventurasdemarcoyluis;
+package model.item;
 
-/** Class that represetn the item Red Mushroom */
+import model.characters.player.interfaces.IPlayers;
+
+/** Class that represents the item Red Mushroom */
 public class RedMushroom extends AbstractItem {
 
   /** Create a Red Mushroom */

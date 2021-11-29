@@ -3,18 +3,21 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import com.example.aventurasdemarcoyluis.Boo;
-import com.example.aventurasdemarcoyluis.Goomba;
-import com.example.aventurasdemarcoyluis.IEnemies;
-import com.example.aventurasdemarcoyluis.Spiny;
+import model.characters.enemy.Boo;
+import model.characters.enemy.Goomba;
+import model.characters.enemy.Spiny;
+import model.characters.enemy.factories.RandomEnemyFactory;
+import model.characters.enemy.interfaces.IEnemies;
+import model.characters.player.Luis;
+import model.characters.player.Marco;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class TestEnemy {
 
-  private IEnemies testGoomba;
-  private IEnemies testSpiny;
-  private IEnemies testBoo;
+  private Goomba testGoomba;
+  private Spiny testSpiny;
+  private Boo testBoo;
 
   @BeforeEach
   public void setUp() {
@@ -148,7 +151,7 @@ public class TestEnemy {
   }
 
   @Test
-  public void isAliveTest() {
+  public void isKOTest() {
     assertFalse(testGoomba.isKO());
     assertFalse(testSpiny.isKO());
     assertFalse(testBoo.isKO());
@@ -158,5 +161,99 @@ public class TestEnemy {
     assertTrue(testGoomba.isKO());
     assertTrue(testSpiny.isKO());
     assertTrue(testBoo.isKO());
+  }
+
+  @Test
+  public void receiveDmgTest() {
+    int dmg = 20;
+    int expectedGoombaHp = testGoomba.getHp() - dmg;
+
+    testGoomba.receiveDmg(dmg);
+
+    assertEquals(expectedGoombaHp, testGoomba.getHp());
+  }
+
+  @Test
+  public void getDmgTest() {
+    Luis testLuis = new Luis(10, 20, 20, 50, 30, 50, 30);
+    int expectedGoombaDmg =
+        Math.round(
+            (float) 0.75
+                * testGoomba.getAtk()
+                * ((float) testGoomba.getLvl() / (float) testLuis.getDef()));
+
+    assertEquals(expectedGoombaDmg, testGoomba.getDmg(testLuis));
+  }
+
+  @Test
+  public void jumpAttackedByPlayerTest() {
+    Marco testMarco = new Marco(10, 20, 20, 50, 30, 50, 30);
+    Luis testLuis = new Luis(10, 20, 20, 50, 30, 50, 30);
+
+    int expectedGoombaHp = Math.max(0, testGoomba.getHp() - testMarco.getJumpDmg(testGoomba));
+    int expectedSpinyHp = testSpiny.getHp();
+    int expectedBooHp = Math.max(0, testBoo.getHp() - testLuis.getJumpDmg(testBoo));
+
+    testGoomba.jumpAttackedByPlayer(testMarco);
+    testSpiny.jumpAttackedByPlayer(testMarco);
+    testBoo.jumpAttackedByPlayer(testLuis);
+
+    assertEquals(expectedGoombaHp, testGoomba.getHp());
+    assertEquals(expectedSpinyHp, testSpiny.getHp());
+    assertEquals(expectedBooHp, testBoo.getHp());
+  }
+
+  @Test
+  public void hammerAttackedByPlayerTest() {
+    Marco testMarco = new Marco(1, 5, 5, 50, 30, 50, 30);
+
+    int expectedGoombaHp = Math.max(0, testGoomba.getHp() - testMarco.getHammerDmg(testGoomba));
+    testGoomba.hammerAttackedByPlayer(testMarco);
+    assertEquals(expectedGoombaHp, testGoomba.getHp());
+
+    int expectedSpinyHp = Math.max(0, testSpiny.getHp() - testMarco.getHammerDmg(testSpiny));
+    testSpiny.hammerAttackedByPlayer(testMarco);
+    assertEquals(expectedSpinyHp, testSpiny.getHp());
+
+    int expectedBooHp1 = testBoo.getHp();
+    testBoo.hammerAttackedByPlayer(testMarco);
+    assertEquals(expectedBooHp1, testBoo.getHp());
+  }
+
+  @Test
+  public void attackPlayerTest() {
+    Marco testMarco = new Marco(10, 20, 20, 50, 30, 50, 30);
+    Luis testLuis = new Luis(10, 20, 20, 50, 30, 50, 30);
+
+    int expectedMarcoHp = testMarco.getHp() - testGoomba.getDmg(testMarco);
+    testGoomba.attackPlayer(testMarco);
+    assertEquals(expectedMarcoHp, testMarco.getHp());
+
+    int expectedLuisHp1 = testLuis.getHp() - testBoo.getDmg(testLuis);
+    testBoo.attackPlayer(testLuis);
+    assertEquals(expectedLuisHp1, testLuis.getHp());
+
+    int expectedLuisHp2 = testLuis.getHp() - testSpiny.getDmg(testLuis);
+    testSpiny.attackPlayer(testLuis);
+    assertEquals(expectedLuisHp2, testLuis.getHp());
+  }
+
+  @Test
+  public void setRandomEnemyFactorySeedTest() {
+    RandomEnemyFactory randomEnemyFactory = new RandomEnemyFactory();
+    randomEnemyFactory.setRandSeed(1);
+    int lvl = 1, atk = 5, def = 5, hp = 10, maxHp = 10;
+
+    IEnemies randomEnemy1 = randomEnemyFactory.createEnemy(lvl, atk, def, hp, maxHp);
+    IEnemies randomEnemy2 = randomEnemyFactory.createEnemy(lvl, atk, def, hp, maxHp);
+    IEnemies randomEnemy3 = randomEnemyFactory.createEnemy(lvl, atk, def, hp, maxHp);
+    IEnemies randomEnemy4 = randomEnemyFactory.createEnemy(lvl, atk, def, hp, maxHp);
+    IEnemies randomEnemy5 = randomEnemyFactory.createEnemy(lvl, atk, def, hp, maxHp);
+
+    assert (randomEnemy1 instanceof Goomba);
+    assert (randomEnemy2 instanceof Spiny);
+    assert (randomEnemy3 instanceof Spiny);
+    assert (randomEnemy4 instanceof Goomba);
+    assert (randomEnemy5 instanceof Boo);
   }
 }

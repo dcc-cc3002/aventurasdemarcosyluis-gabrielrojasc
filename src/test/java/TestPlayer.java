@@ -3,20 +3,24 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import com.example.aventurasdemarcoyluis.HoneySyrup;
-import com.example.aventurasdemarcoyluis.IItems;
-import com.example.aventurasdemarcoyluis.IPlayers;
-import com.example.aventurasdemarcoyluis.Luis;
-import com.example.aventurasdemarcoyluis.Marco;
-import com.example.aventurasdemarcoyluis.RedMushroom;
-import com.example.aventurasdemarcoyluis.Star;
 import java.util.ArrayList;
+import model.characters.enemy.Boo;
+import model.characters.enemy.Goomba;
+import model.characters.enemy.Spiny;
+import model.characters.enemy.interfaces.IEnemies;
+import model.characters.player.ItemVault;
+import model.characters.player.Luis;
+import model.characters.player.Marco;
+import model.characters.player.interfaces.IPlayers;
+import model.item.HoneySyrup;
+import model.item.IItems;
+import model.item.RedMushroom;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class TestPlayer {
-  private IPlayers testMarco;
-  private IPlayers testLuis;
+  private Marco testMarco;
+  private Luis testLuis;
 
   @BeforeEach
   public void setUp() {
@@ -196,13 +200,7 @@ public class TestPlayer {
   }
 
   @Test
-  public void itemGetterTest() {
-    ArrayList<IItems> items = new ArrayList<>();
-    assertEquals(items, testMarco.getItems());
-  }
-
-  @Test
-  public void isAliveTest() {
+  public void isKOTest() {
     assertFalse(testMarco.isKO());
     assertFalse(testLuis.isKO());
     testMarco.setHp(0);
@@ -212,37 +210,207 @@ public class TestPlayer {
   }
 
   @Test
+  public void getItemTest() {
+    ArrayList<IItems> items = new ArrayList<>();
+    ItemVault vault = new ItemVault();
+    assertEquals(items, vault.getItems());
+  }
+
+  @Test
   public void addItemTest() {
+    ItemVault vault = new ItemVault();
     IItems redMushroom = new RedMushroom();
-    IItems star = new Star();
+    IItems honeySyrup = new HoneySyrup();
     ArrayList<IItems> items = new ArrayList<>();
 
-    testMarco.addItem(redMushroom);
+    vault.addItem(redMushroom);
     items.add(redMushroom);
 
-    assertEquals(items, testMarco.getItems());
+    assertEquals(items, vault.getItems());
 
-    testMarco.addItem(star);
-    items.add(star);
+    vault.addItem(honeySyrup);
+    items.add(honeySyrup);
 
-    assertEquals(items, testMarco.getItems());
+    assertEquals(items, vault.getItems());
   }
 
   @Test
   public void useItemTest() {
+    ItemVault vault = new ItemVault();
     IItems honeySyrup = new HoneySyrup();
     ArrayList<IItems> items = new ArrayList<>();
 
-    testMarco.addItem(honeySyrup);
+    vault.addItem(honeySyrup);
     items.add(honeySyrup);
-    assertEquals(items, testMarco.getItems());
+    assertEquals(items, vault.getItems());
 
     int beforeFp = testMarco.getFp();
-    testMarco.useItem(honeySyrup);
+    testMarco.useItem(honeySyrup, vault);
     int afterFp = beforeFp + 3;
     assertEquals(afterFp, testMarco.getFp());
     items.remove(honeySyrup);
 
-    assertEquals(items, testMarco.getItems());
+    assertEquals(items, vault.getItems());
+  }
+
+  @Test
+  public void setRandSeedTest() {
+    Goomba testGoomba1 = new Goomba(10, 50, 50, 100, 100);
+    testMarco.setRandSeed(2);
+
+    testMarco.hammerAttack(testGoomba1);
+    assertEquals(100, testGoomba1.getHp());
+    testMarco.hammerAttack(testGoomba1);
+    assertEquals(100, testGoomba1.getHp());
+    testMarco.hammerAttack(testGoomba1);
+    assertEquals(100, testGoomba1.getHp());
+    testMarco.hammerAttack(testGoomba1);
+    assertEquals(96, testGoomba1.getHp());
+  }
+
+  @Test
+  public void receiveDmgTest() {
+    int dmg = 10;
+    int expectedMarcoHp = testMarco.getHp() - dmg;
+    testMarco.receiveDmg(dmg);
+
+    assertEquals(expectedMarcoHp, testMarco.getHp());
+  }
+
+  @Test
+  public void getJumpDmgTest() {
+    IEnemies testGoomba = new Goomba(1, 5, 5, 10, 10);
+    int expectedJumpDmg =
+        Math.round(testMarco.getAtk() * ((float) testMarco.getLvl() / (float) testGoomba.getDef()));
+
+    assertEquals(expectedJumpDmg, testMarco.getJumpDmg(testGoomba));
+  }
+
+  @Test
+  public void getHammerDmgTest() {
+    IEnemies testGoomba = new Goomba(1, 5, 5, 10, 10);
+    int expectedHammerDmg =
+        Math.round(
+            (float) 1.5
+                * testMarco.getAtk()
+                * ((float) testMarco.getLvl() / (float) testGoomba.getDef()));
+
+    assertEquals(expectedHammerDmg, testMarco.getHammerDmg(testGoomba));
+  }
+
+  @Test
+  public void jumpAttackEnemyTest() {
+    Goomba testGoomba1 = new Goomba(1, 5, 5, 10, 10);
+    Goomba testGoomba2 = new Goomba(10, 50, 50, 100, 100);
+    Spiny testSpiny = new Spiny(10, 50, 50, 100, 100);
+    Boo testBoo = new Boo(10, 50, 50, 100, 100);
+
+    int expectedGoomba1Hp = Math.max(0, testGoomba1.getHp() - testMarco.getJumpDmg(testGoomba1));
+    testMarco.jumpAttack(testGoomba1);
+    assertEquals(expectedGoomba1Hp, testGoomba1.getHp());
+
+    int expectedGoomba2Hp = Math.max(0, testGoomba2.getHp() - testLuis.getJumpDmg(testGoomba2));
+    testLuis.jumpAttack(testGoomba2);
+    assertEquals(expectedGoomba2Hp, testGoomba2.getHp());
+
+    int expectedSpinyHp = testSpiny.getHp();
+    int expectedMarcoHp = testMarco.getHp() - Math.round(testMarco.getHp() * (float) 0.05);
+    testMarco.jumpAttack(testSpiny);
+    assertEquals(expectedSpinyHp, testSpiny.getHp());
+    assertEquals(expectedMarcoHp, testMarco.getHp());
+
+    int expectedBooHp = testBoo.getHp() - testMarco.getJumpDmg(testBoo);
+    testMarco.jumpAttack(testBoo);
+    assertEquals(expectedBooHp, testBoo.getHp());
+  }
+
+  @Test
+  public void hammerAttackEnemyTest() {
+    Goomba testGoomba1 = new Goomba(1, 5, 5, 10, 10);
+    Goomba testGoomba2 = new Goomba(10, 50, 50, 100, 100);
+    Boo testBoo = new Boo(1, 5, 5, 10, 10);
+
+    testMarco.setRandSeed(1);
+    testLuis.setRandSeed(1);
+
+    int expectedGoomba1Hp = testGoomba1.getHp(); // not hit
+    testMarco.hammerAttack(testGoomba1);
+    assertEquals(expectedGoomba1Hp, testGoomba1.getHp());
+
+    int expectedGoomba2Hp = testGoomba2.getHp(); // not hit
+    testLuis.hammerAttack(testGoomba2);
+    assertEquals(expectedGoomba2Hp, testGoomba2.getHp());
+
+    int expectedGoomba3Hp =
+        Math.max(0, testGoomba2.getHp() - testMarco.getHammerDmg(testGoomba2)); // hit
+    testMarco.hammerAttack(testGoomba2);
+    assertEquals(expectedGoomba3Hp, testGoomba2.getHp());
+
+    int expectedGoomba4Hp =
+        Math.max(0, testGoomba2.getHp() - testLuis.getHammerDmg(testGoomba2)); // hit
+    testLuis.hammerAttack(testGoomba2);
+    assertEquals(expectedGoomba4Hp, testGoomba2.getHp());
+
+    int expectedBooHp = testBoo.getHp();
+    testMarco.hammerAttack(testBoo);
+    assertEquals(expectedBooHp, testBoo.getHp());
+  }
+
+  @Test
+  public void attackedByGoombaTest() {
+    Goomba testGoomba = new Goomba(10, 5, 5, 10, 10);
+
+    int expectedMarcoHp = testMarco.getHp() - testGoomba.getDmg(testMarco);
+
+    testMarco.attackedByEnemy(testGoomba);
+
+    assertEquals(expectedMarcoHp, testMarco.getHp());
+  }
+
+  @Test
+  public void attackedBySpinyTest() {
+    Spiny testSpiny = new Spiny(10, 5, 5, 10, 10);
+
+    int expectedMarcoHp = testMarco.getHp() - testSpiny.getDmg(testMarco);
+
+    testMarco.attackedByEnemy(testSpiny);
+
+    assertEquals(expectedMarcoHp, testMarco.getHp());
+  }
+
+  @Test
+  public void attackedByBooTest() {
+    Boo testBoo = new Boo(10, 5, 5, 10, 10);
+
+    int expectedLuisHp = testLuis.getHp() - testBoo.getDmg(testLuis);
+
+    testLuis.attackedByEnemy(testBoo);
+
+    assertEquals(expectedLuisHp, testLuis.getHp());
+  }
+
+  @Test
+  public void levelUpTest() {
+    testMarco.setHp(1);
+    testMarco.setFp(1);
+    int newLvl = testMarco.getLvl() + 1;
+    int newAtk = Math.round(testMarco.getAtk() + (float) 0.15 * testMarco.getAtk());
+    int newDef = Math.round(testMarco.getDef() + (float) 0.15 * testMarco.getDef());
+    int newHp =
+        Math.min(
+            testMarco.getMaxHp(),
+            testMarco.getHp() + Math.round((float) 0.15 * testMarco.getMaxHp()));
+    int newFp =
+        Math.min(
+            testMarco.getMaxFp(),
+            testMarco.getFp() + Math.round((float) 0.15 * testMarco.getMaxFp()));
+
+    testMarco.levelUp();
+
+    assertEquals(newLvl, testMarco.getLvl());
+    assertEquals(newAtk, testMarco.getAtk());
+    assertEquals(newDef, testMarco.getDef());
+    assertEquals(newHp, testMarco.getHp());
+    assertEquals(newFp, testMarco.getFp());
   }
 }

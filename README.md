@@ -2,19 +2,33 @@
 
 ## Run instructions
 
-To run the homework, due to the lack of a graphic interface, you will only need to run the tests,
-which include all the methods and classes created.
+To run the homework, due to the lack of interface, you will only need to run the tests, which
+include all the methods and classes created.
 
 ## Assumptions made
 
-As of now the characters' statistics must be given and are not calculated based on the level due to
-a lack of knowledge on the formula to calculate them.
+As of now the characters' initial statistics must be given and the next level are calculated based
+on the indications given.
 
 ## Brief explanation of the functioning
 
-They are two main characters, Marco and Luis, which are created with the abstract
-class `abstractPlayer`, this class has all the implementations of the methods for the players and
-this class implements the interface `IPlayers`, which has all the methods used by the players. The
-enemies and items follow the same logic with the enemies having the abstract class `abstractEnemy`
-and the interface `IEnemies`, and the items having the abstract class `abstractItem` and the
-interface `IItem`.
+They are five characters Marco, Luis, Goomba, Spiny and Boo, they all share methods like getters and
+setters, so the abstract class `abstractCharacter` was created to not repeat code and implements the
+interface `ICharacters`, which has all the methods in common between all 5 characters. They are two
+players, Marco and Luis, which are created with the abstract class `abstractPlayer`
+which extends `abstractCharacter`, this class has all the implementations of the methods specific to
+the players and this class implements the interface `IPlayers` which extends `ICharacters`, which
+has all the methods specific to the players. The enemies, Goomba, Spiny and Boo, and items follow
+the same logic with the enemies having the abstract class `abstractEnemy` which
+extends `abstractCharacter`
+and the interface `IEnemies` which extends `ICharacters`, and the items having the abstract
+class `abstractItem` and the interface `IItem`.
+
+The controller was created to make the interaction between characters, enemies and items without
+directly calling the model classes and methods, so it can be able to communicate with the view (to
+be created) and execute the requested actions.
+
+
+
+
+
