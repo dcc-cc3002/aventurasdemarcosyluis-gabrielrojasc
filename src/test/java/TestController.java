@@ -1,20 +1,20 @@
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import controller.Controller;
+import com.example.aventurasdemarcoyluis.controller.Controller;
+import com.example.aventurasdemarcoyluis.model.characters.character.interfaces.ICharacters;
+import com.example.aventurasdemarcoyluis.model.characters.enemy.Boo;
+import com.example.aventurasdemarcoyluis.model.characters.enemy.Goomba;
+import com.example.aventurasdemarcoyluis.model.characters.enemy.Spiny;
+import com.example.aventurasdemarcoyluis.model.characters.enemy.interfaces.IEnemies;
+import com.example.aventurasdemarcoyluis.model.characters.enemy.interfaces.attackable.IAttackableByLuis;
+import com.example.aventurasdemarcoyluis.model.characters.player.Luis;
+import com.example.aventurasdemarcoyluis.model.characters.player.Marco;
+import com.example.aventurasdemarcoyluis.model.characters.player.interfaces.IPlayers;
+import com.example.aventurasdemarcoyluis.model.characters.player.interfaces.attackable.IAttackableByBoo;
+import com.example.aventurasdemarcoyluis.model.item.HoneySyrup;
+import com.example.aventurasdemarcoyluis.model.item.IItems;
+import com.example.aventurasdemarcoyluis.model.item.RedMushroom;
 import java.util.ArrayList;
-import model.characters.character.interfaces.ICharacters;
-import model.characters.enemy.Boo;
-import model.characters.enemy.Goomba;
-import model.characters.enemy.Spiny;
-import model.characters.enemy.interfaces.IEnemies;
-import model.characters.enemy.interfaces.attackable.IAttackableByLuis;
-import model.characters.player.Luis;
-import model.characters.player.Marco;
-import model.characters.player.interfaces.IPlayers;
-import model.characters.player.interfaces.attackable.IAttackableByBoo;
-import model.item.HoneySyrup;
-import model.item.IItems;
-import model.item.RedMushroom;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
