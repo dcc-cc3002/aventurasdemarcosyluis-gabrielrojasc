@@ -57,6 +57,11 @@ public class Controller {
     this.round = round;
   }
 
+  /**
+   * Sets the seed to be used for the random numbers
+   *
+   * @param seed the seed to set
+   */
   public void setRandSeed(int seed) {
     rand.setSeed(seed);
     randomEnemyFactory.setRandSeed(seed);
