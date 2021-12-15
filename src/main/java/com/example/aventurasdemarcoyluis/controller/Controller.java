@@ -354,12 +354,23 @@ public class Controller {
     return round > 5;
   }
 
+  /**
+   * Sets the current phase
+   *
+   * @param aPhase the phase to set
+   */
   public void setPhase(Phase aPhase) {
     this.phase = aPhase;
     aPhase.setController(this);
   }
 
+  /** Returns the current phase name */
   public String getCurrentPhase() {
     return phase.toString();
+  }
+
+  /** Tries to start the game */
+  public void tryToStart() {
+    this.initialize();
   }
 }

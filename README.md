@@ -2,8 +2,7 @@
 
 ## Run instructions
 
-To run the homework, due to the lack of interface, you will only need to run the tests, which
-include all the methods and classes created.
+To run the homework, you need to run GameApp inside the gui folder.
 
 ## Assumptions made
 
@@ -27,6 +26,15 @@ class `abstractItem` and the interface `IItem`.
 The controller was created to make the interaction between characters, enemies and items without
 directly calling the model classes and methods, so it can be able to communicate with the view (to
 be created) and execute the requested actions.
+
+Lastly, the phases were introduced to make the interaction between the controller and the view,
+where the main phases are:
+
+- StartPhase: the phase in which the game starts
+- AttackPhase: the phase in which the player chooses the attack to use
+- JumpAttackPhase/HammerAttackPhase: the phase in which the player chooses the target for the attack
+- ItemPhase: the phase in which the player chooses the item to use
+- PassPhase: the phase used by the player to pass
 
 
 
