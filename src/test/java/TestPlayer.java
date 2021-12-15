@@ -399,11 +399,11 @@ public class TestPlayer {
     int newHp =
         Math.min(
             testMarco.getMaxHp(),
-            testMarco.getHp() + Math.round((float) 0.15 * testMarco.getMaxHp()));
+            testMarco.getHp() + Math.round((float) (1.15 * 0.15 * testMarco.getMaxHp())));
     int newFp =
         Math.min(
             testMarco.getMaxFp(),
-            testMarco.getFp() + Math.round((float) 0.15 * testMarco.getMaxFp()));
+            testMarco.getFp() + Math.round((float) (1.15 * 0.15 * testMarco.getMaxFp())));
 
     testMarco.levelUp();
 

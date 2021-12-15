@@ -72,12 +72,29 @@ public abstract class AbstractPlayer extends AbstractCharacter implements IPlaye
   }
 
   /**
+   * Sets the maximum fp
+   *
+   * @param maxFp the maxFp to set
+   * @throws IllegalArgumentException if maxFp is less than 0
+   */
+  @Override
+  public void setMaxFp(int maxFp) {
+    if (maxFp < 0) {
+      throw new IllegalArgumentException(
+          fp + " is not a valid fp. hp must be between 0 and " + maxFp);
+    }
+    this.maxFp = maxFp;
+  }
+
+  /**
    * Levels up the Character, meaning it adds +1 to lvl, +15% of maxHp to hp, +15% to atk, +15% to
    * def and +15% of the maxFp to fp
    */
   @Override
   public void levelUp() {
     super.levelUp();
+    int newMaxFp = Math.round((float) 1.15 * this.getMaxFp());
+    this.setMaxFp(newMaxFp);
     int newFp = this.getFp() + Math.round((float) 0.15 * this.getMaxFp());
     this.setFp(Math.min(this.getMaxFp(), newFp));
   }

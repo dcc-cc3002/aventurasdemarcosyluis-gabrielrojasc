@@ -46,6 +46,14 @@ public interface ICharacters {
   /** Returns the maxHp */
   int getMaxHp();
 
+  /**
+   * Sets the maximum hp
+   *
+   * @param maxHp the maxHp to set
+   * @throws IllegalArgumentException if maxHp is less than 0
+   */
+  void setMaxHp(int maxHp);
+
   /** Returns if the enemy is knocked out (hp=0) */
   boolean isKO();
 

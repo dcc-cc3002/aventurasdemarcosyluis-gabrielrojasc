@@ -1,5 +1,7 @@
 package com.example.aventurasdemarcoyluis.controller;
 
+import com.example.aventurasdemarcoyluis.controller.phases.Phase;
+import com.example.aventurasdemarcoyluis.controller.phases.StartPhase;
 import com.example.aventurasdemarcoyluis.model.characters.character.interfaces.ICharacters;
 import com.example.aventurasdemarcoyluis.model.characters.enemy.Boo;
 import com.example.aventurasdemarcoyluis.model.characters.enemy.Goomba;
@@ -29,6 +31,7 @@ public class Controller {
   private ItemVault itemVault = new ItemVault();
   private RandomEnemyFactory randomEnemyFactory = new RandomEnemyFactory();
   private Random rand = new Random();
+  private Phase phase;
 
   /** Creates a com.example.aventurasdemarcoyluis.controller */
   public Controller() {}
@@ -41,6 +44,7 @@ public class Controller {
     generatePlayers();
     generateEnemies();
     generateItems();
+    setPhase(new StartPhase());
   }
 
   /** Returns the current round */
@@ -348,5 +352,14 @@ public class Controller {
   /** Returns if the players have won the game */
   public boolean playersWinGame() {
     return round > 5;
+  }
+
+  public void setPhase(Phase aPhase) {
+    this.phase = aPhase;
+    aPhase.setController(this);
+  }
+
+  public String getCurrentPhase() {
+    return phase.toString();
   }
 }

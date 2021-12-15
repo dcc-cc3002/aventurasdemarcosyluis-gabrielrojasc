@@ -22,6 +22,14 @@ public interface IPlayers extends ICharacters {
   int getMaxFp();
 
   /**
+   * Sets the maximum fp
+   *
+   * @param maxFp the maxFp to set
+   * @throws IllegalArgumentException if maxFp is less than 0
+   */
+  void setMaxFp(int maxFp);
+
+  /**
    * Uses an item if the item is on the itemList
    *
    * @param item the item to be used

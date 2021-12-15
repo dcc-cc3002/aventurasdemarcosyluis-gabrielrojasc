@@ -117,6 +117,21 @@ public abstract class AbstractCharacter implements ICharacters {
     return maxHp;
   }
 
+  /**
+   * Sets the maximum hp
+   *
+   * @param maxHp the maxHp to set
+   * @throws IllegalArgumentException if maxHp is less than 0
+   */
+  @Override
+  public void setMaxHp(int maxHp) {
+    if (maxHp < 0) {
+      throw new IllegalArgumentException(
+          hp + " is not a valid hp. hp must be between 0 and " + maxHp);
+    }
+    this.maxHp = maxHp;
+  }
+
   /** Returns if the enemy is knocked out (hp=0) */
   @Override
   public boolean isKO() {
@@ -141,6 +156,8 @@ public abstract class AbstractCharacter implements ICharacters {
   @Override
   public void levelUp() {
     this.setLvl(this.getLvl() + 1);
+    int newMaxHp = Math.round((float) 1.15 * this.getMaxHp());
+    this.setMaxHp(newMaxHp);
     int newHp = this.getHp() + Math.round((float) 0.15 * this.getMaxHp());
     this.setHp(Math.min(this.getMaxHp(), newHp));
     this.setAtk(this.getAtk() + Math.round((float) 0.15 * this.getAtk()));
