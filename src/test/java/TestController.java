@@ -1,6 +1,12 @@
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import com.example.aventurasdemarcoyluis.controller.Controller;
+import com.example.aventurasdemarcoyluis.controller.phases.AttackPhase;
+import com.example.aventurasdemarcoyluis.controller.phases.HammerAttackPhase;
+import com.example.aventurasdemarcoyluis.controller.phases.ItemPhase;
+import com.example.aventurasdemarcoyluis.controller.phases.JumpAttackPhase;
+import com.example.aventurasdemarcoyluis.controller.phases.PassPhase;
+import com.example.aventurasdemarcoyluis.controller.phases.StartPhase;
 import com.example.aventurasdemarcoyluis.model.characters.character.interfaces.ICharacters;
 import com.example.aventurasdemarcoyluis.model.characters.enemy.Boo;
 import com.example.aventurasdemarcoyluis.model.characters.enemy.Goomba;
@@ -420,5 +426,28 @@ public class TestController {
 
     assertEquals(true, controller.playersWinBattle());
     assertEquals(false, controller.enemiesWin());
+  }
+
+  @Test
+  public void getCurrentPhaseTest() {
+    controller.setPhase(new StartPhase());
+    assertEquals(controller.getCurrentPhase(), "Start_Phase");
+    controller.setPhase(new AttackPhase());
+    assertEquals(controller.getCurrentPhase(), "Attack_Phase");
+    controller.setPhase(new JumpAttackPhase());
+    assertEquals(controller.getCurrentPhase(), "Jump_Attack_Phase");
+    controller.setPhase(new HammerAttackPhase());
+    assertEquals(controller.getCurrentPhase(), "Hammer_Attack_Phase");
+    controller.setPhase(new ItemPhase());
+    assertEquals(controller.getCurrentPhase(), "Item_Phase");
+    controller.setPhase(new PassPhase());
+    assertEquals(controller.getCurrentPhase(), "Pass_Phase");
+  }
+
+  @Test
+  public void tryToStartPhase() {
+    controller.tryToStart();
+    assertEquals(controller.getCharacterList().size(), 5);
+    assertEquals(controller.getCurrentPhase(), "Start_Phase");
   }
 }

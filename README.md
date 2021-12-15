@@ -2,7 +2,8 @@
 
 ## Run instructions
 
-To run the homework, you need to run GameApp inside the gui folder.
+To run the homework, you need to run GameApp inside the gui folder (not complete at all). For now
+still run the tests.
 
 ## Assumptions made
 

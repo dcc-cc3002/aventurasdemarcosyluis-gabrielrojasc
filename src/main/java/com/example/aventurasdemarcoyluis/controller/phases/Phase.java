@@ -1,7 +1,6 @@
 package com.example.aventurasdemarcoyluis.controller.phases;
 
 import com.example.aventurasdemarcoyluis.controller.Controller;
-import com.example.aventurasdemarcoyluis.controller.phases.exceptions.InvalidMoveException;
 
 /** Class that defines a phase */
 public class Phase {
