@@ -3,18 +3,18 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import com.example.aventurasdemarcoyluis.model.characters.enemy.Boo;
+import com.example.aventurasdemarcoyluis.model.characters.enemy.Goomba;
+import com.example.aventurasdemarcoyluis.model.characters.enemy.Spiny;
+import com.example.aventurasdemarcoyluis.model.characters.enemy.interfaces.IEnemies;
+import com.example.aventurasdemarcoyluis.model.characters.player.ItemVault;
+import com.example.aventurasdemarcoyluis.model.characters.player.Luis;
+import com.example.aventurasdemarcoyluis.model.characters.player.Marco;
+import com.example.aventurasdemarcoyluis.model.characters.player.interfaces.IPlayers;
+import com.example.aventurasdemarcoyluis.model.item.HoneySyrup;
+import com.example.aventurasdemarcoyluis.model.item.IItems;
+import com.example.aventurasdemarcoyluis.model.item.RedMushroom;
 import java.util.ArrayList;
-import model.characters.enemy.Boo;
-import model.characters.enemy.Goomba;
-import model.characters.enemy.Spiny;
-import model.characters.enemy.interfaces.IEnemies;
-import model.characters.player.ItemVault;
-import model.characters.player.Luis;
-import model.characters.player.Marco;
-import model.characters.player.interfaces.IPlayers;
-import model.item.HoneySyrup;
-import model.item.IItems;
-import model.item.RedMushroom;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -399,11 +399,11 @@ public class TestPlayer {
     int newHp =
         Math.min(
             testMarco.getMaxHp(),
-            testMarco.getHp() + Math.round((float) 0.15 * testMarco.getMaxHp()));
+            testMarco.getHp() + Math.round((float) (1.15 * 0.15 * testMarco.getMaxHp())));
     int newFp =
         Math.min(
             testMarco.getMaxFp(),
-            testMarco.getFp() + Math.round((float) 0.15 * testMarco.getMaxFp()));
+            testMarco.getFp() + Math.round((float) (1.15 * 0.15 * testMarco.getMaxFp())));
 
     testMarco.levelUp();
 

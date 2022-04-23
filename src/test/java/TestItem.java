@@ -1,9 +1,9 @@
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import model.characters.player.Marco;
-import model.item.HoneySyrup;
-import model.item.IItems;
-import model.item.RedMushroom;
+import com.example.aventurasdemarcoyluis.model.characters.player.Marco;
+import com.example.aventurasdemarcoyluis.model.item.HoneySyrup;
+import com.example.aventurasdemarcoyluis.model.item.IItems;
+import com.example.aventurasdemarcoyluis.model.item.RedMushroom;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

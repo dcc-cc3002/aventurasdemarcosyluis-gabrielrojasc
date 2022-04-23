@@ -3,13 +3,13 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import model.characters.enemy.Boo;
-import model.characters.enemy.Goomba;
-import model.characters.enemy.Spiny;
-import model.characters.enemy.factories.RandomEnemyFactory;
-import model.characters.enemy.interfaces.IEnemies;
-import model.characters.player.Luis;
-import model.characters.player.Marco;
+import com.example.aventurasdemarcoyluis.model.characters.enemy.Boo;
+import com.example.aventurasdemarcoyluis.model.characters.enemy.Goomba;
+import com.example.aventurasdemarcoyluis.model.characters.enemy.Spiny;
+import com.example.aventurasdemarcoyluis.model.characters.enemy.factories.RandomEnemyFactory;
+import com.example.aventurasdemarcoyluis.model.characters.enemy.interfaces.IEnemies;
+import com.example.aventurasdemarcoyluis.model.characters.player.Luis;
+import com.example.aventurasdemarcoyluis.model.characters.player.Marco;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
